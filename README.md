@@ -1,4 +1,3 @@
-# kashyapparmar1998.github.io
 # Kashyap Parmar
 System Administrator | Cloud & DevOps Learner
 
