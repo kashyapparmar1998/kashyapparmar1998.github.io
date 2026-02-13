@@ -10,7 +10,9 @@ nav {background:#020617; padding:15px; text-align:center;}
 nav a {color:#38bdf8; margin:10px; text-decoration:none;}
 header {padding:50px; text-align:center; background:#020617;}
 section {padding:40px; max-width:900px; margin:auto;}
-.card {background:#020617; padding:15px; margin:10px 0;}
+.card {background:#020617; padding:15px; margin:10px 0; border-radius:6px;}
+summary {cursor:pointer; font-size:18px; font-weight:bold;}
+details {background:#020617; padding:15px; margin:10px 0; border-radius:6px;}
 </style>
 </head>
 
@@ -31,35 +33,64 @@ section {padding:40px; max-width:900px; margin:auto;}
 
 <section id="about">
 <h2>About</h2>
-<p>Cloud Infrastructure Engineer with experience in OCI, Linux, virtualization and networking.</p>
+<p>
+Senior Network Engineer with 5+ years experience in OCI, Linux,
+virtualization, networking, and enterprise infrastructure.
+</p>
 </section>
 
 <section id="skills">
 <h2>Skills</h2>
-<div class="card">OCI</div>
-<div class="card">Linux</div>
-<div class="card">Virtualization</div>
-<div class="card">Networking</div>
+<div class="card">Oracle Cloud Infrastructure</div>
+<div class="card">Linux Administration</div>
+<div class="card">Virtualization (OLVM / VMware)</div>
+<div class="card">Firewall & VPN Security</div>
 <div class="card">Terraform</div>
 </section>
 
 <section id="experience">
 <h2>Experience</h2>
-<div class="card">Bankai Informatics — Senior Network Engineer</div>
-<div class="card">Airan Limited — IT Executive</div>
-<div class="card">Kores India — Network Administrator</div>
+
+<details>
+<summary>Bankai Informatics PVT LTD — Senior Network Engineer (2023-Present)</summary>
+<p>
+Managing OCI compute, storage, and networking infrastructure.
+Configured DRG, VCN, IPSec VPN, and firewall security.
+Administering Linux and Windows servers with monitoring via Nagios.
+Automating infrastructure provisioning using Terraform.
+</p>
+</details>
+
+<details>
+<summary>Airan Limited — IT Executive (2021-2023)</summary>
+<p>
+Managed enterprise infrastructure, endpoint security, backup systems,
+vendor coordination, and L2/L3 support operations.
+Maintained high availability of internal IT systems.
+</p>
+</details>
+
+<details>
+<summary>Kores India — Network Administrator (2019-2021)</summary>
+<p>
+Administered LAN/WAN infrastructure, DNS/DHCP services,
+firewall rules, VPN connectivity, and branch networking.
+</p>
+</details>
+
 </section>
 
 <section id="projects">
 <h2>Projects</h2>
-<div class="card">OCI Lab</div>
-<div class="card">OLVM Management</div>
-<div class="card">Nagios Monitoring</div>
+<div class="card">OCI Network Architecture Lab</div>
+<div class="card">OLVM Virtualization Management</div>
+<div class="card">Nagios Monitoring Setup</div>
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
 <p>Email: kashyapparmar1998@gmail.com</p>
+<p>Ahmedabad, India</p>
 </section>
 
 </body>
