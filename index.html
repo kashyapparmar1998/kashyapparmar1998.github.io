@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar | Portfolio</title>
+<title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
 
 <style>
 body {
@@ -12,10 +12,10 @@ body {
   color: white;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(6px);
   padding: 15px;
   text-align: center;
   position: sticky;
@@ -26,33 +26,174 @@ nav a {
   color: #60a5fa;
   margin: 15px;
   text-decoration: none;
-  font-weight: 500;
 }
 
 /* HERO */
 header {
   text-align: center;
-  padding: 80px 20px;
+  padding: 90px 20px;
   background: linear-gradient(180deg, #020617, #0b1120);
 }
 
-header h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+header h1 { font-size: 44px; }
+
+button {
+  background: #3b82f6;
+  border: none;
+  padding: 12px 20px;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-header p {
-  color: #94a3b8;
-}
-
-/* SECTIONS */
+/* SECTION */
 section {
   padding: 60px 20px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
 }
 
 h2 {
-  margin-bottom: 20px;
   border-left: 4px solid #3b82f6;
   padding-left: 10px;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 15px;
+}
+
+.card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 12px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 25px rgba(59,130,246,.3);
+}
+
+/* EXPERIENCE */
+details {
+  background: #020617;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+summary { cursor: pointer; font-weight: bold; }
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  color: #94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
+
+<header>
+<h1>Kashyap Parmar</h1>
+<p>Cloud Infrastructure Engineer | DevOps Learner</p>
+<br>
+<button onclick="window.location.href='resume.pdf'">Download Resume</button>
+</header>
+
+<section id="about">
+<h2>About</h2>
+<p>
+Cloud Infrastructure Engineer with 5+ years experience in OCI,
+Linux administration, virtualization platforms, firewall security,
+and infrastructure automation using Terraform.
+</p>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="grid">
+<div class="card">Oracle Cloud Infrastructure</div>
+<div class="card">Linux</div>
+<div class="card">Terraform</div>
+<div class="card">Virtualization (OLVM / VMware)</div>
+<div class="card">Firewall & VPN</div>
+<div class="card">Nagios Monitoring</div>
+</div>
+</section>
+
+<section id="projects">
+<h2>DevOps Projects</h2>
+
+<div class="grid">
+<div class="card">
+<b>Linux Monitoring Agent</b>
+<p>Server monitoring automation using scripts and alerts.</p>
+</div>
+
+<div class="card">
+<b>OCI Network Architecture</b>
+<p>VCN, DRG, Security Lists, IPSec VPN implementation.</p>
+</div>
+
+<div class="card">
+<b>Terraform Automation Lab</b>
+<p>Automated infrastructure provisioning using IaC.</p>
+</div>
+
+<div class="card">
+<b>Virtualization Management</b>
+<p>OLVM cluster and VM lifecycle management.</p>
+</div>
+</div>
+
+</section>
+
+<section id="experience">
+<h2>Experience</h2>
+
+<details>
+<summary>Bankai Informatics — Cloud Infrastructure Engineer</summary>
+<p>OCI administration, firewall security, virtualization, monitoring, automation.</p>
+</details>
+
+<details>
+<summary>Airan Limited — IT Executive</summary>
+<p>Infrastructure management, backup systems, endpoint security.</p>
+</details>
+
+<details>
+<summary>Kores India — Network Administrator</summary>
+<p>LAN/WAN networking, DNS/DHCP, VPN connectivity.</p>
+</details>
+
+</section>
+
+<section id="contact">
+<h2>Contact</h2>
+<div class="card">
+Phone: +91 7016218869<br>
+Email: kashyapparmar1998@gmail.com<br>
+Ahmedabad, India
+</div>
+</section>
+
+<footer>
+© 2026 Kashyap Parmar
+</footer>
+
+</body>
+</html>
