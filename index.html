@@ -2,17 +2,98 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar Portfolio</title>
+<title>Kashyap Parmar | Portfolio</title>
 
 <style>
-body {font-family: Arial; margin:0; background:#0f172a; color:white;}
-nav {background:#020617; padding:15px; text-align:center;}
-nav a {color:#38bdf8; margin:10px; text-decoration:none;}
-header {padding:50px; text-align:center; background:#020617;}
-section {padding:40px; max-width:900px; margin:auto;}
-.card {background:#020617; padding:15px; margin:10px 0; border-radius:6px;}
-summary {cursor:pointer; font-size:18px; font-weight:bold;}
-details {background:#020617; padding:15px; margin:10px 0; border-radius:6px;}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0b1120;
+  color: white;
+}
+
+/* NAVBAR */
+nav {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  padding: 15px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+}
+
+nav a {
+  color: #60a5fa;
+  margin: 15px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* HERO */
+header {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(180deg, #020617, #0b1120);
+}
+
+header h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+header p {
+  color: #94a3b8;
+}
+
+/* SECTIONS */
+section {
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+  border-left: 4px solid #3b82f6;
+  padding-left: 10px;
+}
+
+/* CARDS */
+.card {
+  background: #020617;
+  padding: 20px;
+  margin: 12px 0;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #020617;
+  box-shadow: 0px 10px 25px rgba(59,130,246,0.3);
+}
+
+/* EXPERIENCE ACCORDION */
+details {
+  background: #020617;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 10px 0;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+  color: #94a3b8;
+}
 </style>
 </head>
 
@@ -28,14 +109,15 @@ details {background:#020617; padding:15px; margin:10px 0; border-radius:6px;}
 
 <header>
 <h1>Kashyap Parmar</h1>
-<p>Cloud Infrastructure Engineer</p>
+<p>Cloud Infrastructure Engineer | OCI • Linux • Virtualization • Terraform</p>
 </header>
 
 <section id="about">
 <h2>About</h2>
 <p>
-Senior Network Engineer with 5+ years experience in OCI, Linux,
-virtualization, networking, and enterprise infrastructure.
+Cloud Infrastructure Engineer with 5+ years of experience managing
+enterprise infrastructure, virtualization platforms, and OCI cloud
+environments. Focused on automation, reliability, and secure architecture.
 </p>
 </section>
 
@@ -43,55 +125,31 @@ virtualization, networking, and enterprise infrastructure.
 <h2>Skills</h2>
 <div class="card">Oracle Cloud Infrastructure</div>
 <div class="card">Linux Administration</div>
-<div class="card">Virtualization (OLVM / VMware)</div>
+<div class="card">OLVM / VMware Virtualization</div>
 <div class="card">Firewall & VPN Security</div>
-<div class="card">Terraform</div>
+<div class="card">Terraform Automation</div>
 </section>
 
 <section id="experience">
 <h2>Experience</h2>
 
 <details>
-<summary>Bankai Informatics PVT LTD — Senior Network Engineer (2023-Present)</summary>
+<summary>Bankai Informatics — Cloud Infrastructure Engineer</summary>
 <p>
-Managing OCI compute, storage, and networking infrastructure.
-Configured DRG, VCN, IPSec VPN, and firewall security.
-Administering Linux and Windows servers with monitoring via Nagios.
-Automating infrastructure provisioning using Terraform.
+OCI administration, virtualization management, firewall configuration,
+Nagios monitoring, and Terraform automation.
 </p>
 </details>
 
 <details>
-<summary>Airan Limited — IT Executive (2021-2023)</summary>
+<summary>Airan Limited — IT Executive</summary>
 <p>
-Managed enterprise infrastructure, endpoint security, backup systems,
-vendor coordination, and L2/L3 support operations.
-Maintained high availability of internal IT systems.
+Enterprise infrastructure management, backup systems,
+endpoint security, and vendor coordination.
 </p>
 </details>
 
 <details>
-<summary>Kores India — Network Administrator (2019-2021)</summary>
+<summary>Kores India — Network Administrator</summary>
 <p>
-Administered LAN/WAN infrastructure, DNS/DHCP services,
-firewall rules, VPN connectivity, and branch networking.
-</p>
-</details>
-
-</section>
-
-<section id="projects">
-<h2>Projects</h2>
-<div class="card">OCI Network Architecture Lab</div>
-<div class="card">OLVM Virtualization Management</div>
-<div class="card">Nagios Monitoring Setup</div>
-</section>
-
-<section id="contact">
-<h2>Contact</h2>
-<p>Email: kashyapparmar1998@gmail.com</p>
-<p>Ahmedabad, India</p>
-</section>
-
-</body>
-</html>
+LAN/WAN management, DNS/DHCP services
