@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Kashyap Parmar | Portfolio</title>
+
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
+      font-family: Arial, sans-serif;
       background: #0f172a;
       color: white;
     }
 
-    header {
+    nav {
       background: #020617;
-      padding: 40px;
+      padding: 15px;
       text-align: center;
+      position: sticky;
+      top: 0;
+    }
+
+    nav a {
+      color: #38bdf8;
+      margin: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px;
+      background: #020617;
     }
 
     section {
@@ -33,41 +49,57 @@
       margin: 10px 0;
       border-radius: 8px;
     }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
+<nav>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#contact">Contact</a>
+</nav>
+
 <header>
   <h1>Kashyap Parmar</h1>
   <p>System Administrator | Cloud & DevOps Learner</p>
+  <button>Download Resume</button>
 </header>
 
-<section>
+<section id="about">
   <h2>About Me</h2>
   <p>
     System Administrator with experience in Linux, virtualization,
     networking, and cloud infrastructure. Currently learning DevOps
-    and automation tools.
+    tools and automation.
   </p>
 </section>
 
-<section>
+<section id="skills">
   <h2>Skills</h2>
   <div class="card">Linux Administration</div>
-  <div class="card">Oracle Cloud Infrastructure (OCI)</div>
-  <div class="card">AWS Fundamentals</div>
+  <div class="card">OCI</div>
+  <div class="card">AWS</div>
   <div class="card">Networking</div>
-  <div class="card">Virtualization (OLVM)</div>
+  <div class="card">Virtualization</div>
 </section>
 
-<section>
+<section id="projects">
   <h2>Projects</h2>
-  <div class="card">Linux Monitoring Lab</div>
-  <div class="card">OCI IAM Lab</div>
-  <div class="card">Backup & Recovery Lab</div>
+  <div class="card">Linux Monitoring Agent</div>
+  <div class="card">OCI IAM Implementation</div>
+  <div class="card">Backup Lab</div>
 </section>
 
-<section>
+<section id="contact">
   <h2>Contact</h2>
   <p>Email: your-email@example.com</p>
 </section>
