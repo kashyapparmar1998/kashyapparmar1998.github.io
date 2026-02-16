@@ -8,15 +8,22 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(180deg,#020617,#0f172a);
   color: white;
+  background: linear-gradient(-45deg,#020617,#0f172a,#020617,#0f172a);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+}
+
+@keyframes gradient {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
 }
 
 /* NAV */
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 20px 60px;
 }
 
@@ -34,26 +41,21 @@ nav a {
   padding: 100px 60px;
 }
 
-.hero-text {
-  max-width: 520px;
-}
+.hero-text { max-width: 520px; }
 
-.hero h1 {
-  font-size: 52px;
-  margin-bottom: 15px;
-}
+.hero h1 { font-size: 52px; }
 
-.hero span {
-  color: #3b82f6;
-}
-
-.hero p {
-  color: #94a3b8;
-  line-height: 1.6;
-}
+.hero span { color: #3b82f6; }
 
 .hero img {
   width: 420px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+  100% {transform: translateY(0);}
 }
 
 /* BUTTON */
@@ -64,7 +66,6 @@ button {
   color: white;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 15px;
 }
 
 /* SECTION */
@@ -74,11 +75,7 @@ section {
   margin: auto;
 }
 
-h2 {
-  margin-bottom: 25px;
-}
-
-/* GRID */
+/* GLASS CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
@@ -86,7 +83,8 @@ h2 {
 }
 
 .card {
-  background: #020617;
+  background: rgba(2,6,23,.6);
+  backdrop-filter: blur(8px);
   padding: 22px;
   border-radius: 14px;
   transition: .3s;
@@ -94,12 +92,12 @@ h2 {
 
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 30px rgba(59,130,246,.25);
 }
 
 /* CONTACT */
 .contact {
-  background: #020617;
+  background: rgba(2,6,23,.6);
+  backdrop-filter: blur(8px);
   padding: 30px;
   border-radius: 12px;
 }
@@ -123,9 +121,8 @@ h2 {
 <h2>Cloud Infrastructure Engineer</h2>
 
 <p>
-I design and manage enterprise cloud infrastructure, virtualization
-platforms, and secure networking environments. Currently focusing on
-DevOps automation using Terraform and multi-cloud architecture.
+Building reliable cloud infrastructure, virtualization environments,
+and automated systems using OCI, Linux, and Terraform.
 </p>
 
 <br>
@@ -141,7 +138,7 @@ DevOps automation using Terraform and multi-cloud architecture.
 <div class="card">Oracle Cloud Infrastructure</div>
 <div class="card">Linux Administration</div>
 <div class="card">Terraform</div>
-<div class="card">Virtualization (OLVM / VMware)</div>
+<div class="card">Virtualization</div>
 <div class="card">Firewall & VPN</div>
 <div class="card">Nagios Monitoring</div>
 </div>
@@ -152,7 +149,7 @@ DevOps automation using Terraform and multi-cloud architecture.
 <div class="grid">
 <div class="card">OCI Network Architecture</div>
 <div class="card">Terraform Automation Lab</div>
-<div class="card">OLVM Virtualization Management</div>
+<div class="card">OLVM Management</div>
 <div class="card">Linux Monitoring Agent</div>
 </div>
 </section>
@@ -162,7 +159,7 @@ DevOps automation using Terraform and multi-cloud architecture.
 <div class="contact">
 <p><b>Phone:</b> +91 7016218869</p>
 <p><b>Email:</b> kashyapparmar1998@gmail.com</p>
-<p><b>Location:</b> Ahmedabad, India</p>
+<p><b>Ahmedabad, India</b></p>
 </div>
 </section>
 
