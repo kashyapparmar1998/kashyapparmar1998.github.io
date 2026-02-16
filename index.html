@@ -2,39 +2,55 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
+<title>Kashyap Parmar | Cloud Engineer</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0b1120;
+  background: #0f172a;
   color: white;
 }
 
+/* NAV */
 nav {
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(6px);
-  padding: 15px;
-  text-align: center;
-  position: sticky;
-  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 60px;
+  background: #020617;
 }
 
 nav a {
   color: #60a5fa;
-  margin: 15px;
   text-decoration: none;
+  margin-left: 20px;
 }
 
-header {
-  text-align: center;
-  padding: 90px 20px;
-  background: linear-gradient(180deg, #020617, #0b1120);
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
 }
 
-header h1 { font-size: 44px; }
+.hero-text {
+  max-width: 520px;
+}
 
+.hero h1 {
+  font-size: 46px;
+}
+
+.hero p {
+  color: #94a3b8;
+}
+
+.hero img {
+  width: 380px;
+}
+
+/* BUTTON */
 button {
   background: #3b82f6;
   border: none;
@@ -44,49 +60,36 @@ button {
   cursor: pointer;
 }
 
+/* SECTIONS */
 section {
-  padding: 60px 20px;
-  max-width: 1000px;
+  padding: 60px;
+  max-width: 1100px;
   margin: auto;
 }
 
 h2 {
-  border-left: 4px solid #3b82f6;
-  padding-left: 10px;
+  margin-bottom: 20px;
 }
 
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
 }
 
 .card {
   background: #020617;
   padding: 20px;
   border-radius: 12px;
-  transition: .3s;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 25px rgba(59,130,246,.3);
-}
-
-details {
+/* CONTACT */
+.contact {
   background: #020617;
-  padding: 15px;
-  border-radius: 10px;
-  margin: 10px 0;
-}
-
-summary { cursor: pointer; font-weight: bold; }
-
-footer {
+  padding: 30px;
+  border-radius: 12px;
   text-align: center;
-  padding: 20px;
-  background: #020617;
-  color: #94a3b8;
 }
 </style>
 </head>
@@ -94,105 +97,58 @@ footer {
 <body>
 
 <nav>
-<a href="#about">About</a>
+<div><b>Kashyap Parmar</b></div>
+<div>
 <a href="#skills">Skills</a>
-<a href="#certifications">Certifications</a>
 <a href="#projects">Projects</a>
-<a href="#experience">Experience</a>
 <a href="#contact">Contact</a>
+</div>
 </nav>
 
-<header>
-<h1>Kashyap Parmar</h1>
-<p>Cloud Infrastructure Engineer | OCI • Linux • Virtualization • Terraform</p>
+<div class="hero">
+<div class="hero-text">
+<h1>Cloud Infrastructure Engineer</h1>
+<p>
+Building reliable cloud infrastructure, virtualization platforms,
+and automated environments using OCI, Linux, and Terraform.
+</p>
+<br>
 <button onclick="window.location.href='resume.pdf'">Download Resume</button>
-</header>
+</div>
 
-<section id="about">
-<h2>About</h2>
-<p>
-Dynamic Cloud Infrastructure Engineer with 5+ years of experience in
-designing, implementing, and supporting enterprise infrastructure.
-Specialized in Oracle Cloud Infrastructure (OCI), Linux/Windows system
-administration, virtualization platforms (OLVM, VMware), and secure
-network architecture including VPN and firewall security.
-</p>
-<p>
-Experienced in managing critical banking infrastructure, ensuring high
-availability, troubleshooting complex system issues, and automating
-infrastructure provisioning using Terraform while expanding multi-cloud
-expertise in AWS and GCP.
-</p>
-</section>
+<img src="https://cdn-icons-png.flaticon.com/512/2620/2620996.png">
+</div>
 
 <section id="skills">
 <h2>Skills</h2>
 <div class="grid">
-<div class="card">Oracle Cloud Infrastructure (OCI)</div>
+<div class="card">Oracle Cloud Infrastructure</div>
 <div class="card">Linux Administration</div>
-<div class="card">Terraform (IaC)</div>
-<div class="card">OLVM / VMware Virtualization</div>
-<div class="card">Firewall & VPN Security</div>
+<div class="card">Terraform</div>
+<div class="card">Virtualization (OLVM / VMware)</div>
+<div class="card">Firewall & VPN</div>
 <div class="card">Nagios Monitoring</div>
 </div>
 </section>
 
-<section id="certifications">
-<h2>Certifications</h2>
-<div class="grid">
-<div class="card">OCI Architect Associate</div>
-<div class="card">OCI Foundations Associate</div>
-<div class="card">AWS Cloud Practitioner Essentials</div>
-<div class="card">Fortinet NSE 1 & 2</div>
-<div class="card">Windows Server 2022 Administration</div>
-</div>
-</section>
-
 <section id="projects">
-<h2>DevOps Projects</h2>
+<h2>Projects</h2>
 <div class="grid">
-<div class="card"><b>Linux Monitoring Agent</b></div>
-<div class="card"><b>OCI Network Architecture</b></div>
-<div class="card"><b>Terraform Automation Lab</b></div>
-<div class="card"><b>Virtualization Management</b></div>
+<div class="card">OCI Network Architecture</div>
+<div class="card">Terraform Automation Lab</div>
+<div class="card">OLVM Virtualization Management</div>
+<div class="card">Linux Monitoring Agent</div>
 </div>
-</section>
-
-<section id="experience">
-<h2>Experience</h2>
-
-<details>
-<summary>Bankai Informatics — Cloud Infrastructure Engineer</summary>
-<p>OCI administration, virtualization management, firewall configuration,
-Nagios monitoring, and Terraform automation.</p>
-</details>
-
-<details>
-<summary>Airan Limited — IT Executive</summary>
-<p>Enterprise infrastructure management, backup systems, endpoint security,
-and L2/L3 support.</p>
-</details>
-
-<details>
-<summary>Kores India — Network Administrator</summary>
-<p>LAN/WAN networking, DNS/DHCP services, VPN connectivity, firewall rules.</p>
-</details>
-
 </section>
 
 <section id="contact">
 <h2>Contact</h2>
-<div class="grid">
-<div class="card"><b>Phone</b><br>+91 7016218869</div>
-<div class="card"><b>Email</b><br>kashyapparmar1998@gmail.com</div>
-<div class="card"><b>Location</b><br>Ahmedabad, India</div>
-<div class="card"><b>LinkedIn</b><br>linkedin.com/in/kashyap-parmar-engineer</div>
+<div class="contact">
+<p><b>Phone:</b> +91 7016218869</p>
+<p><b>Email:</b> kashyapparmar1998@gmail.com</p>
+<p><b>Location:</b> Ahmedabad, India</p>
 </div>
 </section>
-
-<footer>
-© 2026 Kashyap Parmar
-</footer>
 
 </body>
 </html>
