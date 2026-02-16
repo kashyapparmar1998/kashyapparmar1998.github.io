@@ -8,7 +8,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: #0f172a;
+  background: linear-gradient(180deg,#020617,#0f172a);
   color: white;
 }
 
@@ -16,8 +16,8 @@ body {
 nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 60px;
-  background: #020617;
 }
 
 nav a {
@@ -31,7 +31,7 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 80px 60px;
+  padding: 100px 60px;
 }
 
 .hero-text {
@@ -39,49 +39,62 @@ nav a {
 }
 
 .hero h1 {
-  font-size: 46px;
+  font-size: 52px;
+  margin-bottom: 15px;
+}
+
+.hero span {
+  color: #3b82f6;
 }
 
 .hero p {
   color: #94a3b8;
+  line-height: 1.6;
 }
 
 .hero img {
-  width: 380px;
+  width: 420px;
 }
 
 /* BUTTON */
 button {
   background: #3b82f6;
   border: none;
-  padding: 12px 20px;
+  padding: 14px 24px;
   color: white;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 15px;
 }
 
-/* SECTIONS */
+/* SECTION */
 section {
-  padding: 60px;
+  padding: 70px 60px;
   max-width: 1100px;
   margin: auto;
 }
 
 h2 {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 /* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
   gap: 20px;
 }
 
 .card {
   background: #020617;
-  padding: 20px;
-  border-radius: 12px;
+  padding: 22px;
+  border-radius: 14px;
+  transition: .3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(59,130,246,.25);
 }
 
 /* CONTACT */
@@ -89,7 +102,6 @@ h2 {
   background: #020617;
   padding: 30px;
   border-radius: 12px;
-  text-align: center;
 }
 </style>
 </head>
@@ -107,11 +119,15 @@ h2 {
 
 <div class="hero">
 <div class="hero-text">
-<h1>Cloud Infrastructure Engineer</h1>
+<h1>Hi, I'm <span>Kashyap</span></h1>
+<h2>Cloud Infrastructure Engineer</h2>
+
 <p>
-Building reliable cloud infrastructure, virtualization platforms,
-and automated environments using OCI, Linux, and Terraform.
+I design and manage enterprise cloud infrastructure, virtualization
+platforms, and secure networking environments. Currently focusing on
+DevOps automation using Terraform and multi-cloud architecture.
 </p>
+
 <br>
 <button onclick="window.location.href='resume.pdf'">Download Resume</button>
 </div>
