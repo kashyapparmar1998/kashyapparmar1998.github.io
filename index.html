@@ -2,83 +2,124 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<title>Kashyap Parmar | Portfolio</title>
 
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   color: white;
-  background: #020617;
+  background: linear-gradient(-45deg,#020617,#0f172a,#020617,#0f172a);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
 }
 
-canvas { position: fixed; top:0; left:0; z-index:-1; }
+@keyframes gradient {
+  0% {background-position:0% 50%;}
+  50% {background-position:100% 50%;}
+  100% {background-position:0% 50%;}
+}
 
+/* CURSOR */
+.cursor {
+  border-right: 3px solid #3b82f6;
+  padding-right: 4px;
+}
+
+/* SCROLL */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all .6s ease;
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* NAV */
 nav {
   display: flex;
   justify-content: space-between;
   padding: 20px 60px;
 }
 
-nav a { color:#60a5fa; text-decoration:none; margin-left:20px; }
-
-.hero {
-  text-align:center;
-  padding:120px 20px;
+nav a {
+  color: #60a5fa;
+  text-decoration: none;
+  margin-left: 20px;
 }
 
-.hero h1 { font-size:52px; }
+/* HERO */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 100px 60px;
+}
+
+.hero-text { max-width: 520px; }
+
+.hero h1 { font-size: 52px; }
+
+.hero span { color: #3b82f6; }
+
+.hero img {
+  width: 420px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(0);}
+  50% {transform: translateY(-15px);}
+  100% {transform: translateY(0);}
+}
 
 button {
-  background:#3b82f6;
-  border:none;
-  padding:12px 20px;
-  border-radius:6px;
-  color:white;
-  cursor:pointer;
+  background: #3b82f6;
+  border: none;
+  padding: 14px 24px;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 section {
-  padding:70px 60px;
-  max-width:1100px;
-  margin:auto;
+  padding: 70px 60px;
+  max-width: 1100px;
+  margin: auto;
 }
 
 .grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  gap: 20px;
+}
+
+.about-box, .contact {
+  background: rgba(2,6,23,.6);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 14px;
 }
 
 .card {
-  background:rgba(2,6,23,.6);
-  backdrop-filter:blur(8px);
-  padding:18px;
-  border-radius:12px;
-  text-align:center;
-}
-
-.card img {
-  width:48px;
-  margin-bottom:8px;
-}
-
-/* TIMELINE */
-.timeline {
-  border-left:2px solid #3b82f6;
-  padding-left:20px;
-}
-
-.timeline div { margin:25px 0; }
-
-.badge {
-  display:inline-block;
-  background:#3b82f6;
-  padding:8px 12px;
-  border-radius:6px;
-  margin:5px;
+  background: rgba(2,6,23,.6);
+  backdrop-filter: blur(8px);
+  padding: 22px;
+  border-radius: 14px;
 }
 </style>
 </head>
@@ -88,127 +129,133 @@ section {
 <nav>
 <div><b>Kashyap Parmar</b></div>
 <div>
-<a href="#tools">Tools</a>
-<a href="#experience">Experience</a>
-<a href="#education">Education</a>
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
-<div class="hero">
-<h1>Kashyap Parmar</h1>
-<p>Cloud Infrastructure Engineer | OCI • Linux • Virtualization • Terraform</p>
+<div class="hero fade">
+<div class="hero-text">
+<h1>Hi, I'm <span>Kashyap</span></h1>
+<h2 id="typing" class="cursor"></h2>
+
+<p>
+Building reliable cloud infrastructure, virtualization environments,
+and automated systems using OCI, Linux, and Terraform.
+</p>
+
 <br>
 <button onclick="window.location.href='resume.pdf'">Download Resume</button>
 </div>
 
-<section id="tools">
-<h2>DevOps Tools</h2>
+<img src="https://cdn-icons-png.flaticon.com/512/2620/2620996.png">
+</div>
+
+<section id="about" class="fade">
+<h2>About Me</h2>
+<div class="about-box">
+Cloud Infrastructure Engineer with 5+ years of experience managing
+enterprise infrastructure, OCI cloud environments, virtualization,
+and network security. Experienced in Linux administration, firewall
+configuration, monitoring systems, and infrastructure automation.
+</div>
+</section>
+
+<section id="skills" class="fade">
+<h2>Skills</h2>
 <div class="grid">
-
-<div class="card"><img src="https://skillicons.dev/icons?i=linux">Linux</div>
-<div class="card"><img src="https://skillicons.dev/icons?i=terraform">Terraform</div>
-<div class="card"><img src="https://skillicons.dev/icons?i=docker">Docker</div>
-<div class="card"><img src="https://skillicons.dev/icons?i=git">Git</div>
-<div class="card"><img src="https://skillicons.dev/icons?i=aws">AWS</div>
-<div class="card"><img src="https://skillicons.dev/icons?i=ubuntu">Linux Server</div>
-
+<div class="card">Oracle Cloud Infrastructure</div>
+<div class="card">Linux Administration</div>
+<div class="card">Terraform</div>
+<div class="card">Virtualization</div>
+<div class="card">Firewall & VPN</div>
+<div class="card">Nagios Monitoring</div>
 </div>
 </section>
 
-<section>
-<h2>Certifications</h2>
-<div>
-<span class="badge">OCI Architect Associate</span>
-<span class="badge">OCI Foundations</span>
-<span class="badge">AWS Cloud Practitioner</span>
-<span class="badge">Fortinet NSE 1 & 2</span>
-<span class="badge">Windows Server 2022</span>
+<section id="projects" class="fade">
+<h2>Projects</h2>
+<div class="grid">
+<div class="card">OCI Network Architecture</div>
+<div class="card">Terraform Automation Lab</div>
+<div class="card">OLVM Management</div>
+<div class="card">Linux Monitoring Agent</div>
 </div>
 </section>
 
-<section id="experience">
-<h2>Experience</h2>
-<div class="timeline">
-
-<div>
-<b>2023 — Present</b><br>
-Cloud Infrastructure Engineer — Bankai Informatics<br>
-OCI administration, virtualization management, firewall configuration,
-Nagios monitoring, and Terraform automation.
-</div>
-
-<div>
-<b>2021 — 2023</b><br>
-IT Executive — Airan Limited<br>
-Enterprise infrastructure management, backup systems,
-endpoint security, and L2/L3 support.
-</div>
-
-<div>
-<b>2019 — 2021</b><br>
-Network Administrator — Kores India Pvt Ltd<br>
-LAN/WAN networking, DNS/DHCP services, VPN connectivity,
-and firewall rule configuration.
-</div>
-
-</div>
-</section>
-
-<section id="education">
-<h2>Education</h2>
-<div class="timeline">
-<div><b>2019</b><br>BE Computer Engineering — VGEC</div>
-<div><b>2016</b><br>Diploma Computer Engineering — R.C. Technical</div>
-</div>
-</section>
-
-<section id="contact">
+<section id="contact" class="fade">
 <h2>Contact</h2>
-<div class="card">
-+91 7016218869<br>
-kashyapparmar1998@gmail.com<br>
-Ahmedabad, India
+<div class="contact">
+<p><b>Phone:</b> +91 7016218869</p>
+<p><b>Email:</b> kashyapparmar1998@gmail.com</p>
+<p><b>Ahmedabad, India</b></p>
 </div>
 </section>
 
 <script>
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,3000);
-const renderer=new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
-document.body.appendChild(renderer.domElement);
+/* ROTATING TYPING */
+const roles = [
+  "Cloud Infrastructure Engineer",
+  "Senior Network Engineer",
+  "DevOps Engineer",
+  "Linux Engineer"
+];
 
-function stars(c,s,d){
-const g=new THREE.BufferGeometry();
-const v=[];
-for(let i=0;i<c;i++){
-v.push(
-THREE.MathUtils.randFloatSpread(d),
-THREE.MathUtils.randFloatSpread(d),
-THREE.MathUtils.randFloatSpread(d));
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
+const speed = 70;
+const pause = 1200;
+const typingElement = document.getElementById("typing");
+
+function typeLoop() {
+  const currentRole = roles[roleIndex];
+
+  if (!deleting) {
+    typingElement.textContent = currentRole.substring(0, charIndex++);
+    if (charIndex > currentRole.length) {
+      deleting = true;
+      setTimeout(typeLoop, pause);
+      return;
+    }
+  } else {
+    typingElement.textContent = currentRole.substring(0, charIndex--);
+    if (charIndex === 0) {
+      deleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+    }
+  }
+
+  setTimeout(typeLoop, deleting ? speed / 2 : speed);
 }
-g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
-const m=new THREE.PointsMaterial({color:0x60a5fa,size:s,opacity:.6,transparent:true});
-const p=new THREE.Points(g,m);
-scene.add(p);
-return p;
-}
 
-const l1=stars(3000,1.2,1500);
-const l2=stars(2000,1.8,2000);
-const l3=stars(1000,2.5,2500);
+typeLoop();
 
-camera.position.z=800;
+/* SCROLL FADE */
+const faders = document.querySelectorAll(".fade");
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+});
+faders.forEach(el => observer.observe(el));
 
-function animate(){
-requestAnimationFrame(animate);
-l1.rotation.y+=0.00015;
-l2.rotation.y+=0.0001;
-l3.rotation.y+=0.00007;
-renderer.render(scene,camera);
-}
-animate();
+/* STAGGER CARDS */
+const cardObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const cards = entry.target.querySelectorAll(".card");
+      cards.forEach((card, i) => {
+        setTimeout(() => card.classList.add("show"), i * 120);
+      });
+    }
+  });
+});
+document.querySelectorAll(".grid").forEach(g => cardObserver.observe(g));
 </script>
 
 </body>
