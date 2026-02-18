@@ -48,7 +48,7 @@ section {
 
 .grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:20px;
 }
 
@@ -57,6 +57,12 @@ section {
   backdrop-filter:blur(8px);
   padding:18px;
   border-radius:12px;
+  text-align:center;
+}
+
+.card img {
+  width:48px;
+  margin-bottom:8px;
 }
 
 .timeline {
@@ -71,8 +77,6 @@ section {
   border-radius:6px;
   margin:5px;
 }
-
-.tools img { width:40px; }
 </style>
 </head>
 
@@ -96,13 +100,38 @@ section {
 
 <section id="tools">
 <h2>DevOps Tools</h2>
-<div class="grid tools">
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"><br>Linux</div>
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"><br>Terraform</div>
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vmware/vmware-original.svg"><br>VMware</div>
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><br>Docker</div>
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"><br>Git</div>
-<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"><br>AWS</div>
+<div class="grid">
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=linux">
+Linux
+</div>
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=terraform">
+Terraform
+</div>
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=docker">
+Docker
+</div>
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=git">
+Git
+</div>
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=aws">
+AWS
+</div>
+
+<div class="card">
+<img src="https://skillicons.dev/icons?i=ubuntu">
+Linux Server
+</div>
+
 </div>
 </section>
 
