@@ -4,20 +4,22 @@
 <meta charset="UTF-8">
 <title>Kashyap Parmar | Cloud Engineer</title>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+
 <style>
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   color: white;
-  background: linear-gradient(-45deg,#020617,#0f172a,#020617,#0f172a);
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
+  overflow-x: hidden;
+  background: #020617;
 }
 
-@keyframes gradient {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 /* NAV */
@@ -38,44 +40,33 @@ nav a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 100px 60px;
+  padding: 120px 60px;
 }
 
 .hero-text { max-width: 520px; }
 
-.hero h1 { font-size: 52px; }
+.hero h1 { font-size: 50px; }
 
 .hero span { color: #3b82f6; }
 
 .hero img {
-  width: 420px;
+  width: 380px;
   animation: float 4s ease-in-out infinite;
 }
 
 @keyframes float {
   0% {transform: translateY(0);}
-  50% {transform: translateY(-15px);}
+  50% {transform: translateY(-12px);}
   100% {transform: translateY(0);}
 }
 
-/* BUTTON */
-button {
-  background: #3b82f6;
-  border: none;
-  padding: 14px 24px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* SECTION */
+/* SECTIONS */
 section {
   padding: 70px 60px;
   max-width: 1100px;
   margin: auto;
 }
 
-/* GLASS CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
@@ -85,21 +76,8 @@ section {
 .card {
   background: rgba(2,6,23,.6);
   backdrop-filter: blur(8px);
-  padding: 22px;
+  padding: 20px;
   border-radius: 14px;
-  transition: .3s;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-}
-
-/* CONTACT */
-.contact {
-  background: rgba(2,6,23,.6);
-  backdrop-filter: blur(8px);
-  padding: 30px;
-  border-radius: 12px;
 }
 </style>
 </head>
@@ -119,14 +97,10 @@ section {
 <div class="hero-text">
 <h1>Hi, I'm <span>Kashyap</span></h1>
 <h2>Cloud Infrastructure Engineer</h2>
-
 <p>
-Building reliable cloud infrastructure, virtualization environments,
+Designing cloud infrastructure, virtualization environments,
 and automated systems using OCI, Linux, and Terraform.
 </p>
-
-<br>
-<button onclick="window.location.href='resume.pdf'">Download Resume</button>
 </div>
 
 <img src="https://cdn-icons-png.flaticon.com/512/2620/2620996.png">
@@ -136,7 +110,7 @@ and automated systems using OCI, Linux, and Terraform.
 <h2>Skills</h2>
 <div class="grid">
 <div class="card">Oracle Cloud Infrastructure</div>
-<div class="card">Linux Administration</div>
+<div class="card">Linux</div>
 <div class="card">Terraform</div>
 <div class="card">Virtualization</div>
 <div class="card">Firewall & VPN</div>
@@ -156,12 +130,48 @@ and automated systems using OCI, Linux, and Terraform.
 
 <section id="contact">
 <h2>Contact</h2>
-<div class="contact">
-<p><b>Phone:</b> +91 7016218869</p>
-<p><b>Email:</b> kashyapparmar1998@gmail.com</p>
-<p><b>Ahmedabad, India</b></p>
+<div class="card">
+<p>+91 7016218869</p>
+<p>kashyapparmar1998@gmail.com</p>
+<p>Ahmedabad, India</p>
 </div>
 </section>
+
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha:true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+const geometry = new THREE.BufferGeometry();
+const vertices = [];
+
+for (let i = 0; i < 5000; i++) {
+  vertices.push(
+    THREE.MathUtils.randFloatSpread(2000),
+    THREE.MathUtils.randFloatSpread(2000),
+    THREE.MathUtils.randFloatSpread(2000)
+  );
+}
+
+geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices,3));
+
+const material = new THREE.PointsMaterial({ color:0x3b82f6 });
+const particles = new THREE.Points(geometry, material);
+
+scene.add(particles);
+camera.position.z = 500;
+
+function animate() {
+  requestAnimationFrame(animate);
+  particles.rotation.x += 0.0005;
+  particles.rotation.y += 0.0005;
+  renderer.render(scene, camera);
+}
+
+animate();
+</script>
 
 </body>
 </html>
