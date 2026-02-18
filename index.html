@@ -11,16 +11,11 @@ body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   color: white;
-  overflow-x: hidden;
   background: #020617;
+  overflow-x: hidden;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
+canvas { position: fixed; top:0; left:0; z-index:-1; }
 
 nav {
   display: flex;
@@ -28,42 +23,62 @@ nav {
   padding: 20px 60px;
 }
 
-nav a {
-  color: #60a5fa;
-  text-decoration: none;
-  margin-left: 20px;
-}
+nav a { color:#60a5fa; text-decoration:none; margin-left:20px; }
 
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 120px 60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:120px 60px;
 }
 
-.hero-text { max-width: 520px; }
+.hero h1 { font-size:52px; }
 
-.hero h1 { font-size: 50px; }
+.cloud {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  background:#3b82f6;
+  animation:spin 8s linear infinite;
+}
 
-.hero span { color: #3b82f6; }
+@keyframes spin {
+  from { transform:rotate(0); }
+  to { transform:rotate(360deg); }
+}
 
 section {
-  padding: 70px 60px;
-  max-width: 1100px;
-  margin: auto;
+  padding:70px 60px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
 }
 
 .card {
-  background: rgba(2,6,23,.6);
-  backdrop-filter: blur(8px);
-  padding: 20px;
-  border-radius: 14px;
+  background:rgba(2,6,23,.6);
+  backdrop-filter:blur(8px);
+  padding:18px;
+  border-radius:12px;
+}
+
+.timeline {
+  border-left:2px solid #3b82f6;
+  padding-left:20px;
+}
+
+.timeline div { margin:20px 0; }
+
+.badge {
+  display:inline-block;
+  background:#3b82f6;
+  padding:8px 12px;
+  border-radius:6px;
+  margin:5px;
 }
 </style>
 </head>
@@ -73,7 +88,7 @@ section {
 <nav>
 <div><b>Kashyap Parmar</b></div>
 <div>
-<a href="#skills">Skills</a>
+<a href="#tools">Tools</a>
 <a href="#projects">Projects</a>
 <a href="#education">Education</a>
 <a href="#contact">Contact</a>
@@ -81,51 +96,57 @@ section {
 </nav>
 
 <div class="hero">
-<div class="hero-text">
-<h1>Hi, I'm <span>Kashyap</span></h1>
-<h2>Cloud Infrastructure Engineer</h2>
-<p>
-Designing cloud infrastructure, virtualization environments,
-and automated systems using OCI, Linux, and Terraform.
-</p>
+<div>
+<h1>Cloud Infrastructure Engineer</h1>
+<p>OCI • Linux • Virtualization • Terraform</p>
 </div>
+<div class="cloud"></div>
 </div>
 
-<section id="skills">
-<h2>Skills</h2>
+<section id="tools">
+<h2>DevOps Tools</h2>
 <div class="grid">
-<div class="card">Oracle Cloud Infrastructure</div>
+<div class="card">OCI</div>
 <div class="card">Linux</div>
 <div class="card">Terraform</div>
-<div class="card">Virtualization</div>
-<div class="card">Firewall & VPN</div>
-<div class="card">Nagios Monitoring</div>
+<div class="card">VMware</div>
+<div class="card">Nagios</div>
+<div class="card">Firewall</div>
+</div>
+</section>
+
+<section>
+<h2>Certifications</h2>
+<div>
+<span class="badge">OCI Architect Associate</span>
+<span class="badge">OCI Foundations</span>
+<span class="badge">AWS Cloud Practitioner</span>
+<span class="badge">Fortinet NSE 1 & 2</span>
+<span class="badge">Windows Server 2022</span>
 </div>
 </section>
 
 <section id="projects">
-<h2>Projects</h2>
+<h2>GitHub Projects</h2>
 <div class="grid">
-<div class="card">OCI Network Architecture</div>
-<div class="card">Terraform Automation Lab</div>
-<div class="card">OLVM Management</div>
+<div class="card">Terraform Lab Repo</div>
 <div class="card">Linux Monitoring Agent</div>
+<div class="card">OCI Networking Lab</div>
+<div class="card">Virtualization Lab</div>
 </div>
 </section>
 
 <section id="education">
-<h2>Academic</h2>
-<div class="grid">
-<div class="card">
-<b>Bachelor of Engineering (Computer Engineering)</b><br>
-Vishwakarma Government Engineering College<br>
-2019
+<h2>Education</h2>
+<div class="timeline">
+<div>
+<b>2019</b><br>
+BE Computer Engineering — VGEC
 </div>
 
-<div class="card">
-<b>Diploma in Computer Engineering</b><br>
-R.C. Technical Institute<br>
-2016
+<div>
+<b>2016</b><br>
+Diploma Computer Engineering — R.C. Technical Institute
 </div>
 </div>
 </section>
@@ -133,91 +154,64 @@ R.C. Technical Institute<br>
 <section id="contact">
 <h2>Contact</h2>
 <div class="card">
-<p>+91 7016218869</p>
-<p>kashyapparmar1998@gmail.com</p>
-<p>Ahmedabad, India</p>
++91 7016218869<br>
+kashyapparmar1998@gmail.com<br>
+Ahmedabad, India
 </div>
 </section>
 
 <script>
 const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  1,
-  3000
-);
-
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight,1,3000);
+const renderer = new THREE.WebGLRenderer({alpha:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-/* STARFIELD LAYERS */
-function createStars(count, size, depth) {
-  const geometry = new THREE.BufferGeometry();
-  const vertices = [];
-
-  for (let i = 0; i < count; i++) {
-    vertices.push(
-      THREE.MathUtils.randFloatSpread(depth),
-      THREE.MathUtils.randFloatSpread(depth),
-      THREE.MathUtils.randFloatSpread(depth)
-    );
-  }
-
-  geometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(vertices, 3)
-  );
-
-  const material = new THREE.PointsMaterial({
-    color: 0x60a5fa,
-    size: size,
-    transparent: true,
-    opacity: 0.7
-  });
-
-  const stars = new THREE.Points(geometry, material);
-  scene.add(stars);
-  return stars;
+function createStars(count,size,depth){
+const geometry=new THREE.BufferGeometry();
+const vertices=[];
+for(let i=0;i<count;i++){
+vertices.push(
+THREE.MathUtils.randFloatSpread(depth),
+THREE.MathUtils.randFloatSpread(depth),
+THREE.MathUtils.randFloatSpread(depth)
+);
+}
+geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+const material=new THREE.PointsMaterial({color:0x60a5fa,size:size,transparent:true,opacity:0.7});
+const stars=new THREE.Points(geometry,material);
+scene.add(stars);
+return stars;
 }
 
-const layer1 = createStars(3000, 1.2, 1500);
-const layer2 = createStars(2000, 1.8, 2000);
-const layer3 = createStars(1000, 2.5, 2500);
+const layer1=createStars(3000,1.2,1500);
+const layer2=createStars(2000,1.8,2000);
+const layer3=createStars(1000,2.5,2500);
 
-camera.position.z = 800;
+camera.position.z=800;
 
-/* MOUSE PARALLAX */
-let mouseX = 0;
-let mouseY = 0;
+let mouseX=0,mouseY=0;
 
-document.addEventListener("mousemove", e => {
-  mouseX = (e.clientX - window.innerWidth / 2) * 0.00005;
-  mouseY = (e.clientY - window.innerHeight / 2) * 0.00005;
+document.addEventListener("mousemove",e=>{
+mouseX=(e.clientX-window.innerWidth/2)*0.00005;
+mouseY=(e.clientY-window.innerHeight/2)*0.00005;
 });
 
-/* ANIMATION */
-function animate() {
-  requestAnimationFrame(animate);
-
-  layer1.rotation.y += 0.0002;
-  layer2.rotation.y += 0.00015;
-  layer3.rotation.y += 0.0001;
-
-  scene.rotation.y = mouseX * 2;
-  scene.rotation.x = mouseY * 2;
-
-  renderer.render(scene, camera);
+function animate(){
+requestAnimationFrame(animate);
+layer1.rotation.y+=0.0002;
+layer2.rotation.y+=0.00015;
+layer3.rotation.y+=0.0001;
+scene.rotation.y=mouseX*2;
+scene.rotation.x=mouseY*2;
+renderer.render(scene,camera);
 }
-
 animate();
 
-window.addEventListener("resize", () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+window.addEventListener('resize',()=>{
+camera.aspect=window.innerWidth/window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth,window.innerHeight);
 });
 </script>
 
