@@ -39,7 +39,7 @@ nav a { color:#60a5fa; text-decoration:none; margin-left:20px; }
   height:120px;
   border-radius:50%;
   background:#3b82f6;
-  animation:spin 8s linear infinite;
+  animation:spin 10s linear infinite;
 }
 
 @keyframes spin {
@@ -178,7 +178,7 @@ THREE.MathUtils.randFloatSpread(depth)
 );
 }
 geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-const material=new THREE.PointsMaterial({color:0x60a5fa,size:size,transparent:true,opacity:0.7});
+const material=new THREE.PointsMaterial({color:0x60a5fa,size:size,transparent:true,opacity:0.6});
 const stars=new THREE.Points(geometry,material);
 scene.add(stars);
 return stars;
@@ -190,20 +190,11 @@ const layer3=createStars(1000,2.5,2500);
 
 camera.position.z=800;
 
-let mouseX=0,mouseY=0;
-
-document.addEventListener("mousemove",e=>{
-mouseX=(e.clientX-window.innerWidth/2)*0.00005;
-mouseY=(e.clientY-window.innerHeight/2)*0.00005;
-});
-
 function animate(){
 requestAnimationFrame(animate);
-layer1.rotation.y+=0.0002;
-layer2.rotation.y+=0.00015;
-layer3.rotation.y+=0.0001;
-scene.rotation.y=mouseX*2;
-scene.rotation.x=mouseY*2;
+layer1.rotation.y+=0.00015;
+layer2.rotation.y+=0.0001;
+layer3.rotation.y+=0.00007;
 renderer.render(scene,camera);
 }
 animate();
