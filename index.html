@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar | Cloud Engineer</title>
+<title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 
@@ -12,7 +12,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   color: white;
   background: #020617;
-  overflow-x: hidden;
 }
 
 canvas { position: fixed; top:0; left:0; z-index:-1; }
@@ -27,24 +26,32 @@ nav a { color:#60a5fa; text-decoration:none; margin-left:20px; }
 
 .hero {
   display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:120px 60px;
+  justify-content:center;
+  padding:120px 20px;
 }
 
-.hero h1 { font-size:52px; }
+.profile-card {
+  background:rgba(2,6,23,.7);
+  backdrop-filter:blur(10px);
+  padding:30px;
+  border-radius:16px;
+  text-align:center;
+  width:320px;
+}
 
-.cloud {
-  width:120px;
-  height:120px;
+.profile-card img {
+  width:90px;
   border-radius:50%;
-  background:#3b82f6;
-  animation:spin 10s linear infinite;
+  margin-bottom:10px;
 }
 
-@keyframes spin {
-  from { transform:rotate(0); }
-  to { transform:rotate(360deg); }
+button {
+  background:#3b82f6;
+  border:none;
+  padding:10px 18px;
+  border-radius:6px;
+  color:white;
+  cursor:pointer;
 }
 
 section {
@@ -71,14 +78,16 @@ section {
   padding-left:20px;
 }
 
-.timeline div { margin:20px 0; }
-
 .badge {
   display:inline-block;
   background:#3b82f6;
   padding:8px 12px;
   border-radius:6px;
   margin:5px;
+}
+
+.tools img {
+  width:40px;
 }
 </style>
 </head>
@@ -96,22 +105,23 @@ section {
 </nav>
 
 <div class="hero">
-<div>
-<h1>Cloud Infrastructure Engineer</h1>
-<p>OCI • Linux • Virtualization • Terraform</p>
+<div class="profile-card">
+<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+<h2>Kashyap Parmar</h2>
+<p>Cloud Infrastructure Engineer</p>
+<button onclick="window.location.href='resume.pdf'">Download Resume</button>
 </div>
-<div class="cloud"></div>
 </div>
 
 <section id="tools">
 <h2>DevOps Tools</h2>
-<div class="grid">
-<div class="card">OCI</div>
-<div class="card">Linux</div>
-<div class="card">Terraform</div>
-<div class="card">VMware</div>
-<div class="card">Nagios</div>
-<div class="card">Firewall</div>
+<div class="grid tools">
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"><br>Linux</div>
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg"><br>Terraform</div>
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vmware/vmware-original.svg"><br>VMware</div>
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"><br>Docker</div>
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"><br>Git</div>
+<div class="card"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg"><br>AWS</div>
 </div>
 </section>
 
@@ -129,25 +139,33 @@ section {
 <section id="projects">
 <h2>GitHub Projects</h2>
 <div class="grid">
-<div class="card">Terraform Lab Repo</div>
-<div class="card">Linux Monitoring Agent</div>
-<div class="card">OCI Networking Lab</div>
-<div class="card">Virtualization Lab</div>
+<div class="card">
+<b>Terraform Lab</b><br>
+<a href="#">View Repo</a>
+</div>
+
+<div class="card">
+<b>Linux Monitoring Agent</b><br>
+<a href="#">View Repo</a>
+</div>
+
+<div class="card">
+<b>OCI Networking Lab</b><br>
+<a href="#">View Repo</a>
+</div>
+
+<div class="card">
+<b>Virtualization Lab</b><br>
+<a href="#">View Repo</a>
+</div>
 </div>
 </section>
 
 <section id="education">
 <h2>Education</h2>
 <div class="timeline">
-<div>
-<b>2019</b><br>
-BE Computer Engineering — VGEC
-</div>
-
-<div>
-<b>2016</b><br>
-Diploma Computer Engineering — R.C. Technical Institute
-</div>
+<div><b>2019</b><br>BE Computer Engineering — VGEC</div>
+<div><b>2016</b><br>Diploma Computer Engineering — R.C. Technical</div>
 </div>
 </section>
 
@@ -161,49 +179,41 @@ Ahmedabad, India
 </section>
 
 <script>
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight,1,3000);
-const renderer = new THREE.WebGLRenderer({alpha:true});
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,1,3000);
+const renderer=new THREE.WebGLRenderer({alpha:true});
 renderer.setSize(window.innerWidth,window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-function createStars(count,size,depth){
-const geometry=new THREE.BufferGeometry();
-const vertices=[];
-for(let i=0;i<count;i++){
-vertices.push(
-THREE.MathUtils.randFloatSpread(depth),
-THREE.MathUtils.randFloatSpread(depth),
-THREE.MathUtils.randFloatSpread(depth)
-);
+function stars(c,s,d){
+const g=new THREE.BufferGeometry();
+const v=[];
+for(let i=0;i<c;i++){
+v.push(THREE.MathUtils.randFloatSpread(d),
+THREE.MathUtils.randFloatSpread(d),
+THREE.MathUtils.randFloatSpread(d));
 }
-geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-const material=new THREE.PointsMaterial({color:0x60a5fa,size:size,transparent:true,opacity:0.6});
-const stars=new THREE.Points(geometry,material);
-scene.add(stars);
-return stars;
+g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));
+const m=new THREE.PointsMaterial({color:0x60a5fa,size:s,opacity:.6,transparent:true});
+const p=new THREE.Points(g,m);
+scene.add(p);
+return p;
 }
 
-const layer1=createStars(3000,1.2,1500);
-const layer2=createStars(2000,1.8,2000);
-const layer3=createStars(1000,2.5,2500);
+const l1=stars(3000,1.2,1500);
+const l2=stars(2000,1.8,2000);
+const l3=stars(1000,2.5,2500);
 
 camera.position.z=800;
 
 function animate(){
 requestAnimationFrame(animate);
-layer1.rotation.y+=0.00015;
-layer2.rotation.y+=0.0001;
-layer3.rotation.y+=0.00007;
+l1.rotation.y+=0.00015;
+l2.rotation.y+=0.0001;
+l3.rotation.y+=0.00007;
 renderer.render(scene,camera);
 }
 animate();
-
-window.addEventListener('resize',()=>{
-camera.aspect=window.innerWidth/window.innerHeight;
-camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth,window.innerHeight);
-});
 </script>
 
 </body>
