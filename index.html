@@ -141,46 +141,83 @@ R.C. Technical Institute<br>
 
 <script>
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight,0.1,2000);
-const renderer = new THREE.WebGLRenderer({alpha:true});
-renderer.setSize(window.innerWidth,window.innerHeight);
+
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  1,
+  3000
+);
+
+const renderer = new THREE.WebGLRenderer({ alpha: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const geometry = new THREE.BufferGeometry();
-const vertices = [];
+/* STARFIELD LAYERS */
+function createStars(count, size, depth) {
+  const geometry = new THREE.BufferGeometry();
+  const vertices = [];
 
-for(let i=0;i<15000;i++){
-  vertices.push(
-    THREE.MathUtils.randFloatSpread(2000),
-    THREE.MathUtils.randFloatSpread(2000),
-    THREE.MathUtils.randFloatSpread(2000)
+  for (let i = 0; i < count; i++) {
+    vertices.push(
+      THREE.MathUtils.randFloatSpread(depth),
+      THREE.MathUtils.randFloatSpread(depth),
+      THREE.MathUtils.randFloatSpread(depth)
+    );
+  }
+
+  geometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(vertices, 3)
   );
+
+  const material = new THREE.PointsMaterial({
+    color: 0x60a5fa,
+    size: size,
+    transparent: true,
+    opacity: 0.7
+  });
+
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
+  return stars;
 }
 
-geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+const layer1 = createStars(3000, 1.2, 1500);
+const layer2 = createStars(2000, 1.8, 2000);
+const layer3 = createStars(1000, 2.5, 2500);
 
-const material = new THREE.PointsMaterial({color:0x3b82f6,size:1.5});
-const particles = new THREE.Points(geometry,material);
-scene.add(particles);
+camera.position.z = 800;
 
-camera.position.z=600;
+/* MOUSE PARALLAX */
+let mouseX = 0;
+let mouseY = 0;
 
-/* MOUSE INTERACTION */
-document.addEventListener("mousemove",(e)=>{
-  particles.rotation.y = e.clientX * 0.00005;
-  particles.rotation.x = e.clientY * 0.00005;
+document.addEventListener("mousemove", e => {
+  mouseX = (e.clientX - window.innerWidth / 2) * 0.00005;
+  mouseY = (e.clientY - window.innerHeight / 2) * 0.00005;
 });
 
-function animate(){
+/* ANIMATION */
+function animate() {
   requestAnimationFrame(animate);
-  renderer.render(scene,camera);
+
+  layer1.rotation.y += 0.0002;
+  layer2.rotation.y += 0.00015;
+  layer3.rotation.y += 0.0001;
+
+  scene.rotation.y = mouseX * 2;
+  scene.rotation.x = mouseY * 2;
+
+  renderer.render(scene, camera);
 }
+
 animate();
 
-window.addEventListener('resize',()=>{
-  camera.aspect=window.innerWidth/window.innerHeight;
+window.addEventListener("resize", () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 });
 </script>
 
