@@ -25,30 +25,16 @@ nav {
 nav a { color:#60a5fa; text-decoration:none; margin-left:20px; }
 
 .hero {
-  display:flex;
-  justify-content:center;
+  text-align:center;
   padding:120px 20px;
 }
 
-.profile-card {
-  background:rgba(2,6,23,.7);
-  backdrop-filter:blur(10px);
-  padding:30px;
-  border-radius:16px;
-  text-align:center;
-  width:320px;
-}
-
-.profile-card img {
-  width:90px;
-  border-radius:50%;
-  margin-bottom:10px;
-}
+.hero h1 { font-size:52px; }
 
 button {
   background:#3b82f6;
   border:none;
-  padding:10px 18px;
+  padding:12px 20px;
   border-radius:6px;
   color:white;
   cursor:pointer;
@@ -86,9 +72,7 @@ section {
   margin:5px;
 }
 
-.tools img {
-  width:40px;
-}
+.tools img { width:40px; }
 </style>
 </head>
 
@@ -98,19 +82,16 @@ section {
 <div><b>Kashyap Parmar</b></div>
 <div>
 <a href="#tools">Tools</a>
-<a href="#projects">Projects</a>
 <a href="#education">Education</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
 <div class="hero">
-<div class="profile-card">
-<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
-<h2>Kashyap Parmar</h2>
-<p>Cloud Infrastructure Engineer</p>
+<h1>Kashyap Parmar</h1>
+<p>Cloud Infrastructure Engineer | OCI • Linux • Virtualization • Terraform</p>
+<br>
 <button onclick="window.location.href='resume.pdf'">Download Resume</button>
-</div>
 </div>
 
 <section id="tools">
@@ -133,31 +114,6 @@ section {
 <span class="badge">AWS Cloud Practitioner</span>
 <span class="badge">Fortinet NSE 1 & 2</span>
 <span class="badge">Windows Server 2022</span>
-</div>
-</section>
-
-<section id="projects">
-<h2>GitHub Projects</h2>
-<div class="grid">
-<div class="card">
-<b>Terraform Lab</b><br>
-<a href="#">View Repo</a>
-</div>
-
-<div class="card">
-<b>Linux Monitoring Agent</b><br>
-<a href="#">View Repo</a>
-</div>
-
-<div class="card">
-<b>OCI Networking Lab</b><br>
-<a href="#">View Repo</a>
-</div>
-
-<div class="card">
-<b>Virtualization Lab</b><br>
-<a href="#">View Repo</a>
-</div>
 </div>
 </section>
 
@@ -189,7 +145,8 @@ function stars(c,s,d){
 const g=new THREE.BufferGeometry();
 const v=[];
 for(let i=0;i<c;i++){
-v.push(THREE.MathUtils.randFloatSpread(d),
+v.push(
+THREE.MathUtils.randFloatSpread(d),
 THREE.MathUtils.randFloatSpread(d),
 THREE.MathUtils.randFloatSpread(d));
 }
