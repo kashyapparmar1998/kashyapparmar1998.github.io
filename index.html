@@ -1,259 +1,572 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kashyap Parmar | Portfolio</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-  background: linear-gradient(-45deg,#020617,#0f172a,#020617,#0f172a);
-  background-size: 400% 400%;
-  animation: gradient 12s ease infinite;
-}
-
-@keyframes gradient {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
-
-/* CURSOR */
-.cursor {
-  border-right: 3px solid #3b82f6;
-  padding-right: 4px;
-}
-
-/* SCROLL */
-.fade {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.fade.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.card {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all .6s ease;
-}
-
-.card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* NAV */
-nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 60px;
-}
-
-nav a {
-  color: #60a5fa;
-  text-decoration: none;
-  margin-left: 20px;
-}
-
-/* HERO */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 100px 60px;
-}
-
-.hero-text { max-width: 520px; }
-
-.hero h1 { font-size: 52px; }
-
-.hero span { color: #3b82f6; }
-
-.hero img {
-  width: 420px;
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% {transform: translateY(0);}
-  50% {transform: translateY(-15px);}
-  100% {transform: translateY(0);}
-}
-
-button {
-  background: #3b82f6;
-  border: none;
-  padding: 14px 24px;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-section {
-  padding: 70px 60px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-  gap: 20px;
-}
-
-.about-box, .contact {
-  background: rgba(2,6,23,.6);
-  backdrop-filter: blur(8px);
-  padding: 30px;
-  border-radius: 14px;
-}
-
-.card {
-  background: rgba(2,6,23,.6);
-  backdrop-filter: blur(8px);
-  padding: 22px;
-  border-radius: 14px;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-<div><b>Kashyap Parmar</b></div>
-<div>
-<a href="#about">About</a>
-<a href="#skills">Skills</a>
-<a href="#projects">Projects</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<div class="hero fade">
-<div class="hero-text">
-<h1>Hi, I'm <span>Kashyap</span></h1>
-<h2 id="typing" class="cursor"></h2>
-
-<p>
-Building reliable cloud infrastructure, virtualization environments,
-and automated systems using OCI, Linux, and Terraform.
-</p>
-
-<br>
-<button onclick="window.location.href='resume.pdf'">Download Resume</button>
-</div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/2620/2620996.png">
-</div>
-
-<section id="about" class="fade">
-<h2>About Me</h2>
-<div class="about-box">
-Cloud Infrastructure Engineer with 5+ years of experience managing
-enterprise infrastructure, OCI cloud environments, virtualization,
-and network security. Experienced in Linux administration, firewall
-configuration, monitoring systems, and infrastructure automation.
-</div>
-</section>
-
-<section id="skills" class="fade">
-<h2>Skills</h2>
-<div class="grid">
-<div class="card">Oracle Cloud Infrastructure</div>
-<div class="card">Linux Administration</div>
-<div class="card">Terraform</div>
-<div class="card">Virtualization</div>
-<div class="card">Firewall & VPN</div>
-<div class="card">Nagios Monitoring</div>
-</div>
-</section>
-
-<section id="projects" class="fade">
-<h2>Projects</h2>
-<div class="grid">
-<div class="card">OCI Network Architecture</div>
-<div class="card">Terraform Automation Lab</div>
-<div class="card">OLVM Management</div>
-<div class="card">Linux Monitoring Agent</div>
-</div>
-</section>
-
-<section id="contact" class="fade">
-<h2>Contact</h2>
-<div class="contact">
-<p><b>Phone:</b> +91 7016218869</p>
-<p><b>Email:</b> kashyapparmar1998@gmail.com</p>
-<p><b>Ahmedabad, India</b></p>
-</div>
-</section>
-
-<script>
-/* ROTATING TYPING */
-const roles = [
-  "Cloud Infrastructure Engineer",
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-const speed = 70;
-const pause = 1200;
-const typingElement = document.getElementById("typing");
-
-function typeLoop() {
-  const currentRole = roles[roleIndex];
-
-  if (!deleting) {
-    typingElement.textContent = currentRole.substring(0, charIndex++);
-    if (charIndex > currentRole.length) {
-      deleting = true;
-      setTimeout(typeLoop, pause);
-      return;
-    }
-  } else {
-    typingElement.textContent = currentRole.substring(0, charIndex--);
-    if (charIndex === 0) {
-      deleting = false;
-      roleIndex = (roleIndex + 1) % roles.length;
-    }
+  :root {
+    --bg: #ffffff;
+    --bg2: #f8f9fb;
+    --bg3: #f0f2f5;
+    --border: #e8eaed;
+    --text: #1a1f2e;
+    --text-mid: #4a5568;
+    --text-light: #8a95a3;
+    --accent: #2563eb;
+    --accent2: #1d4ed8;
+    --accent-light: #eff6ff;
+    --green: #10b981;
+    --green-light: #ecfdf5;
+    --shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
   }
 
-  setTimeout(typeLoop, deleting ? speed / 2 : speed);
-}
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 48px; height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--text-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta { padding: 9px 22px; background: var(--accent); color: #fff !important; border-radius: 8px; font-weight: 600 !important; }
+  .nav-cta:hover { background: var(--accent2); color: #fff !important; }
 
-typeLoop();
+  /* HERO */
+  #hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 100px 48px 80px; position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  #hero::after {
+    content: ''; position: absolute; bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 400px; gap: 80px; align-items: center; position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; background: var(--green-light);
+    border: 1px solid #a7f3d0; border-radius: 100px;
+    font-size: 0.78rem; font-weight: 600; color: var(--green); margin-bottom: 28px;
+  }
+  .hero-badge::before {
+    content: ''; width: 8px; height: 8px; background: var(--green);
+    border-radius: 50%; animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+  .hero-title {
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(2.6rem, 5vw, 3.8rem);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -0.03em; margin-bottom: 20px;
+  }
+  .hero-title .accent { color: var(--accent); }
+  .hero-subtitle { font-size: 1rem; color: var(--text-mid); margin-bottom: 36px; line-height: 1.75; max-width: 500px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 13px 28px; border-radius: 10px;
+    font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border: 2px solid var(--accent); box-shadow: 0 4px 14px rgba(37,99,235,0.3); }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.35); }
+  .btn-ghost { background: transparent; color: var(--text); border: 2px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 40px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .hero-stat-num { font-family: 'Sora', sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; }
+  .hero-stat-num em { color: var(--accent); font-style: normal; }
+  .hero-stat-label { font-size: 0.78rem; color: var(--text-light); font-weight: 500; margin-top: 2px; }
 
-/* SCROLL FADE */
-const faders = document.querySelectorAll(".fade");
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-    }
+  /* Hero card */
+  .hero-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px;
+    box-shadow: var(--shadow-lg);
+    animation: floatCard 4s ease-in-out infinite;
+  }
+  @keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .avatar-wrap {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), #60a5fa);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Sora', sans-serif; font-size: 1.8rem; font-weight: 800;
+    color: #fff; margin-bottom: 18px;
+    box-shadow: 0 8px 24px rgba(37,99,235,0.3);
+  }
+  .card-name { font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .card-role { font-size: 0.78rem; color: var(--text-light); margin-bottom: 22px; }
+  .card-skills { display: flex; flex-direction: column; gap: 12px; }
+  .card-skill-row { display: flex; flex-direction: column; gap: 5px; }
+  .card-skill-top { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--text-mid); font-weight: 500; }
+  .card-skill-pct { color: var(--accent); font-weight: 700; }
+  .card-bar { height: 6px; background: var(--bg3); border-radius: 3px; overflow: hidden; }
+  .card-fill {
+    height: 100%; border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    transform: scaleX(0); transform-origin: left;
+    animation: fillBar 1.5s ease forwards;
+  }
+  .card-fill:nth-child(1) { animation-delay: 0.5s; }
+  .card-fill:nth-child(2) { animation-delay: 0.7s; }
+  .card-fill:nth-child(3) { animation-delay: 0.9s; }
+  @keyframes fillBar { to { transform: scaleX(1); } }
+  .card-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); }
+  .cbadge { padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; background: var(--accent-light); color: var(--accent); }
+
+  /* Sections */
+  section { padding: 100px 48px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 2px; background: var(--accent); border-radius: 1px; }
+  .section-title {
+    font-family: 'Sora', sans-serif; font-size: 2.2rem; font-weight: 800;
+    letter-spacing: -0.03em; color: var(--text); margin-bottom: 52px; line-height: 1.2;
+  }
+
+  /* ABOUT */
+  #about { background: var(--bg2); border-top: 1px solid var(--border); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-text p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 16px; }
+  .info-cards { display: flex; flex-direction: column; gap: 10px; }
+  .info-card {
+    display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 12px; transition: all 0.2s;
+  }
+  .info-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(37,99,235,0.08); }
+  .info-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .info-key { font-size: 0.68rem; font-weight: 700; color: var(--text-light); letter-spacing: 0.06em; text-transform: uppercase; }
+  .info-val { font-size: 0.86rem; font-weight: 600; color: var(--text); margin-top: 1px; }
+  .info-val a { color: var(--accent); text-decoration: none; }
+  .status-dot { display: inline-block; width: 7px; height: 7px; background: var(--green); border-radius: 50%; margin-right: 5px; animation: pulse 2s infinite; }
+
+  /* SKILLS */
+  #skills { background: var(--bg); border-top: 1px solid var(--border); }
+  .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .skill-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 26px; transition: all 0.25s; position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), #60a5fa);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+  }
+  .skill-card:hover { border-color: rgba(37,99,235,0.25); box-shadow: 0 8px 30px rgba(37,99,235,0.08); transform: translateY(-3px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon-wrap { width: 46px; height: 46px; border-radius: 12px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 14px; }
+  .skill-name { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .skill-sub { font-size: 0.72rem; color: var(--text-light); margin-bottom: 16px; }
+  .skill-bar { height: 5px; background: var(--bg3); border-radius: 3px; overflow: hidden; margin-bottom: 5px; }
+  .skill-fill { height: 100%; background: linear-gradient(90deg, var(--accent), #60a5fa); border-radius: 3px; transform: scaleX(0); transform-origin: left; transition: transform 1s ease; }
+  .skill-card.in-view .skill-fill { transform: scaleX(1); }
+  .skill-pct { font-size: 0.73rem; font-weight: 700; color: var(--accent); text-align: right; }
+
+  /* PROJECTS */
+  #projects { background: var(--bg2); border-top: 1px solid var(--border); }
+  .projects-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; }
+  .project-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-radius: 16px; padding: 30px; transition: all 0.25s; display: flex; flex-direction: column; gap: 14px;
+  }
+  .project-card:hover { border-color: rgba(37,99,235,0.3); box-shadow: 0 12px 40px rgba(37,99,235,0.09); transform: translateY(-4px); }
+  .project-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .project-icon { width: 50px; height: 50px; border-radius: 13px; background: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+  .project-num { font-size: 0.68rem; font-weight: 700; color: var(--text-light); letter-spacing: 0.1em; background: var(--bg3); padding: 4px 10px; border-radius: 6px; }
+  .project-title { font-family: 'Sora', sans-serif; font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+  .project-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.75; flex: 1; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+  .tag { padding: 4px 11px; font-size: 0.7rem; font-weight: 600; border-radius: 6px; background: var(--bg3); color: var(--text-mid); border: 1px solid var(--border); transition: all 0.2s; }
+  .project-card:hover .tag { background: var(--accent-light); color: var(--accent); border-color: rgba(37,99,235,0.2); }
+
+  /* CONTACT */
+  #contact { background: var(--bg); border-top: 1px solid var(--border); }
+  .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .contact-left p { font-size: 0.93rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; }
+  .contact-items { display: flex; flex-direction: column; gap: 12px; }
+  .contact-item {
+    display: flex; align-items: center; gap: 14px; padding: 16px 18px;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 12px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .contact-item:hover { border-color: var(--accent); background: var(--accent-light); transform: translateX(4px); }
+  .ci-icon { width: 42px; height: 42px; border-radius: 11px; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .ci-label { font-size: 0.68rem; font-weight: 700; color: var(--text-light); letter-spacing: 0.07em; text-transform: uppercase; }
+  .ci-val { font-size: 0.85rem; font-weight: 600; color: var(--text); margin-top: 2px; }
+  .contact-form-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; padding: 34px; }
+  .form-title { font-family: 'Sora', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text); margin-bottom: 22px; }
+  .form-row { margin-bottom: 16px; }
+  .form-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-mid); margin-bottom: 7px; }
+  .form-input {
+    width: 100%; padding: 11px 15px; background: var(--bg);
+    border: 1.5px solid var(--border); border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 0.87rem; color: var(--text);
+    outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+  textarea.form-input { height: 110px; resize: none; }
+  .form-input::placeholder { color: var(--text-light); }
+  .form-btn {
+    width: 100%; padding: 13px; background: var(--accent); color: #fff;
+    border: none; border-radius: 10px;
+    font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+    cursor: pointer; transition: all 0.2s;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3); margin-top: 4px;
+  }
+  .form-btn:hover { background: var(--accent2); transform: translateY(-1px); }
+
+  /* FOOTER */
+  footer {
+    padding: 28px 48px; background: var(--text);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem; color: rgba(255,255,255,0.4);
+  }
+  .footer-logo { font-family: 'Sora', sans-serif; font-weight: 700; color: #fff; }
+  .footer-logo span { color: #60a5fa; }
+
+  /* Scroll bar */
+  .scroll-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--accent), #60a5fa); z-index: 9999; width: 0; }
+
+  /* Fade up */
+  .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    #hero, section { padding: 80px 20px 60px; }
+    #about, #skills, #projects, #contact { padding: 70px 20px; }
+    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+    .about-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 36px; }
+    .skills-grid { grid-template-columns: repeat(2,1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px 20px; }
+  }
+  @media (max-width: 480px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-bar" id="scrollBar"></div>
+
+<nav>
+  <div class="nav-logo">Kashyap<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Open to Opportunities</div>
+      <h1 class="hero-title">Cloud Infrastructure<br><span class="accent">Engineer.</span></h1>
+      <p class="hero-subtitle">5+ years building reliable, scalable cloud infrastructure using OCI, Linux, and Terraform. Passionate about automation and secure enterprise systems.</p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary">View My Work →</a>
+        <a href="mailto:kashyapparmar1998@gmail.com" class="btn btn-ghost">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num"><em id="c1">0</em>+</div>
+          <div class="hero-stat-label">Years Experience</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><em id="c2">0</em>+</div>
+          <div class="hero-stat-label">Projects Deployed</div>
+        </div>
+        <div>
+          <div class="hero-stat-num"><em id="c3">0</em>%</div>
+          <div class="hero-stat-label">Uptime SLA</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar-wrap">KP</div>
+      <div class="card-name">Kashyap Parmar</div>
+      <div class="card-role">Cloud Infrastructure Engineer · Ahmedabad, IN</div>
+      <div class="card-skills">
+        <div class="card-skill-row">
+          <div class="card-skill-top"><span>Oracle Cloud (OCI)</span><span class="card-skill-pct">92%</span></div>
+          <div class="card-bar"><div class="card-fill" style="width:92%"></div></div>
+        </div>
+        <div class="card-skill-row">
+          <div class="card-skill-top"><span>Linux Administration</span><span class="card-skill-pct">95%</span></div>
+          <div class="card-bar"><div class="card-fill" style="width:95%;animation-delay:0.7s"></div></div>
+        </div>
+        <div class="card-skill-row">
+          <div class="card-skill-top"><span>Terraform (IaC)</span><span class="card-skill-pct">88%</span></div>
+          <div class="card-bar"><div class="card-fill" style="width:88%;animation-delay:0.9s"></div></div>
+        </div>
+      </div>
+      <div class="card-badges">
+        <span class="cbadge">OCI</span><span class="cbadge">Terraform</span>
+        <span class="cbadge">Linux</span><span class="cbadge">Nagios</span>
+        <span class="cbadge">VPN</span><span class="cbadge">OLVM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">A bit about who I am</h2>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I'm a Cloud Infrastructure Engineer based in Ahmedabad with 5+ years of experience designing and managing enterprise-grade infrastructure. I specialise in Oracle Cloud Infrastructure, architecting secure, high-availability environments for demanding workloads.</p>
+        <p>My day-to-day involves automating infrastructure with Terraform, administering Linux servers, configuring firewalls and VPNs, and ensuring system health with Nagios monitoring. I enjoy finding smarter, cleaner ways to manage complex systems.</p>
+        <p>Whether building a cloud environment from scratch or optimising an existing one, I bring reliability, security, and automation to everything I do.</p>
+      </div>
+      <div class="info-cards fade-up">
+        <div class="info-card">
+          <div class="info-icon">👤</div>
+          <div><div class="info-key">Full Name</div><div class="info-val">Kashyap Parmar</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📍</div>
+          <div><div class="info-key">Location</div><div class="info-val">Ahmedabad, Gujarat, India</div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📧</div>
+          <div><div class="info-key">Email</div><div class="info-val"><a href="mailto:kashyapparmar1998@gmail.com">kashyapparmar1998@gmail.com</a></div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">📞</div>
+          <div><div class="info-key">Phone</div><div class="info-val"><a href="tel:+917016218869">+91 7016218869</a></div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon">💼</div>
+          <div><div class="info-key">Status</div><div class="info-val"><span class="status-dot"></span>Open to Opportunities</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="section-label">Tech Stack</div>
+    <h2 class="section-title">Core Skills &amp; Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">☁️</div>
+        <div class="skill-name">Oracle Cloud Infrastructure</div>
+        <div class="skill-sub">OCI · VCN · Compute · Storage</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+        <div class="skill-pct">92%</div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">🐧</div>
+        <div class="skill-name">Linux Administration</div>
+        <div class="skill-sub">RHEL · Ubuntu · Shell Scripting</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+        <div class="skill-pct">95%</div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">⚙️</div>
+        <div class="skill-name">Terraform (IaC)</div>
+        <div class="skill-sub">Modules · State Mgmt · CI/CD</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+        <div class="skill-pct">88%</div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">🖥️</div>
+        <div class="skill-name">Virtualization</div>
+        <div class="skill-sub">OLVM · KVM · HA Clusters</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+        <div class="skill-pct">85%</div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">🔒</div>
+        <div class="skill-name">Firewall &amp; VPN</div>
+        <div class="skill-sub">Network Security · IPSec · SSL</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+        <div class="skill-pct">87%</div>
+      </div>
+      <div class="skill-card fade-up">
+        <div class="skill-icon-wrap">📊</div>
+        <div class="skill-name">Nagios Monitoring</div>
+        <div class="skill-sub">Alerts · Custom Plugins · Dashboards</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+        <div class="skill-pct">90%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Featured Work</h2>
+    <div class="projects-grid">
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-icon">🌐</div>
+          <span class="project-num">01</span>
+        </div>
+        <div class="project-title">OCI Network Architecture</div>
+        <div class="project-desc">Designed and deployed a multi-tier VCN architecture on Oracle Cloud with private/public subnets, security lists, route tables, and load balancing for enterprise-grade workloads requiring high availability.</div>
+        <div class="project-tags"><span class="tag">OCI</span><span class="tag">VCN</span><span class="tag">Load Balancer</span><span class="tag">Security Lists</span></div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-icon">⚙️</div>
+          <span class="project-num">02</span>
+        </div>
+        <div class="project-title">Terraform Automation Lab</div>
+        <div class="project-desc">Built a comprehensive IaC framework using Terraform modules to fully automate provisioning of OCI resources — compute, storage, networking — with remote state management and CI/CD integration.</div>
+        <div class="project-tags"><span class="tag">Terraform</span><span class="tag">IaC</span><span class="tag">OCI</span><span class="tag">CI/CD</span></div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-icon">🖥️</div>
+          <span class="project-num">03</span>
+        </div>
+        <div class="project-title">OLVM Management Platform</div>
+        <div class="project-desc">Managed Oracle Linux Virtualization Manager with KVM-based VMs, live migration, high-availability clusters, and centralised resource pool management across 50+ virtual machines.</div>
+        <div class="project-tags"><span class="tag">OLVM</span><span class="tag">KVM</span><span class="tag">HA Cluster</span><span class="tag">Linux</span></div>
+      </div>
+      <div class="project-card fade-up">
+        <div class="project-header">
+          <div class="project-icon">📊</div>
+          <span class="project-num">04</span>
+        </div>
+        <div class="project-title">Linux Monitoring Agent</div>
+        <div class="project-desc">Developed custom Nagios plugins for Linux servers — tracking CPU, memory, disk and application metrics with automated alerting and escalation pipelines to reduce MTTR.</div>
+        <div class="project-tags"><span class="tag">Nagios</span><span class="tag">Shell Script</span><span class="tag">Linux</span><span class="tag">Alerting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's work together</h2>
+    <div class="contact-wrapper">
+      <div class="contact-left fade-up">
+        <p>Looking for a Cloud Infrastructure Engineer who can design, automate, and manage enterprise systems? I'd love to hear about your project or opportunity.</p>
+        <div class="contact-items">
+          <a href="mailto:kashyapparmar1998@gmail.com" class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div><div class="ci-label">Email</div><div class="ci-val">kashyapparmar1998@gmail.com</div></div>
+          </a>
+          <a href="tel:+917016218869" class="contact-item">
+            <div class="ci-icon">📞</div>
+            <div><div class="ci-label">Phone</div><div class="ci-val">+91 7016218869</div></div>
+          </a>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div><div class="ci-label">Location</div><div class="ci-val">Ahmedabad, Gujarat, India</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form-wrap fade-up">
+        <div class="form-title">Send a message</div>
+        <div class="form-row">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="John Doe">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="john@example.com">
+        </div>
+        <div class="form-row">
+          <label class="form-label">Message</label>
+          <textarea class="form-input" placeholder="Hi Kashyap, I'd like to discuss..."></textarea>
+        </div>
+        <button class="form-btn" onclick="handleSubmit(this)">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Kashyap<span>.</span></div>
+  <div>© 2025 Kashyap Parmar · Ahmedabad, India</div>
+  <div>Built with ♥</div>
+</footer>
+
+<script>
+  // Scroll bar
+  window.addEventListener('scroll', () => {
+    const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    document.getElementById('scrollBar').style.width = pct * 100 + '%';
   });
-});
-faders.forEach(el => observer.observe(el));
 
-/* STAGGER CARDS */
-const cardObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const cards = entry.target.querySelectorAll(".card");
-      cards.forEach((card, i) => {
-        setTimeout(() => card.classList.add("show"), i * 120);
-      });
-    }
-  });
-});
-document.querySelectorAll(".grid").forEach(g => cardObserver.observe(g));
+  // Count up
+  function countUp(id, target) {
+    let n = 0, el = document.getElementById(id);
+    const step = Math.ceil(target / 50);
+    const t = setInterval(() => {
+      n = Math.min(n + step, target);
+      el.textContent = n;
+      if (n >= target) clearInterval(t);
+    }, 30);
+  }
+  countUp('c1', 5); countUp('c2', 20); countUp('c3', 99);
+
+  // IntersectionObserver for fade-up + skill bars
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible', 'in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up, .skill-card').forEach(el => io.observe(el));
+
+  // Form
+  function handleSubmit(btn) {
+    btn.textContent = 'Sending...';
+    btn.style.background = '#6b7280';
+    setTimeout(() => {
+      btn.textContent = '✓ Message Sent!';
+      btn.style.background = '#10b981';
+      btn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.4)';
+    }, 1400);
+  }
 </script>
-
 </body>
 </html>
