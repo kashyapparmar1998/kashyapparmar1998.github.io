@@ -264,7 +264,7 @@
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View My Work →</a>
         <a href="https://kashyapparmar1998.github.io/resume.pdf" download class="btn-resume">⬇ Download Resume</a>
-        <a href="mailto:kashyapparmar1998@gmail.com" class="btn btn-ghost">Get in Touch</a>
+        <a href="/cdn-cgi/l/email-protection#0e656f7d66776f7e7e6f7c636f7c3f3737364e69636f6762206d6163" class="btn btn-ghost">Get in Touch</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -331,7 +331,7 @@
         </div>
         <div class="info-card">
           <div class="info-icon">📧</div>
-          <div><div class="info-key">Email</div><div class="info-val"><a href="mailto:kashyapparmar1998@gmail.com">kashyapparmar1998@gmail.com</a></div></div>
+          <div><div class="info-key">Email</div><div class="info-val"><a href="/cdn-cgi/l/email-protection#274c46544f5e46575746554a4655161e1e1f67404a464e4b0944484a"><span class="__cf_email__" data-cfemail="600b0113081901101001120d01125159595820070d01090c4e030f0d">[email&#160;protected]</span></a></div></div>
         </div>
         <div class="info-card">
           <div class="info-icon">📞</div>
@@ -453,9 +453,9 @@
       <div class="contact-left fade-up">
         <p>Looking for a Cloud Infrastructure Engineer who can design, automate, and manage enterprise systems? I'd love to hear about your project or opportunity.</p>
         <div class="contact-items">
-          <a href="mailto:kashyapparmar1998@gmail.com" class="contact-item">
+          <a href="/cdn-cgi/l/email-protection#c5aea4b6adbca4b5b5a4b7a8a4b7f4fcfcfd85a2a8a4aca9eba6aaa8" class="contact-item">
             <div class="ci-icon">✉️</div>
-            <div><div class="ci-label">Email</div><div class="ci-val">kashyapparmar1998@gmail.com</div></div>
+            <div><div class="ci-label">Email</div><div class="ci-val"><span class="__cf_email__" data-cfemail="046f65776c7d6574746576696576353d3d3c446369656d682a676b69">[email&#160;protected]</span></div></div>
           </a>
           <a href="tel:+917016218869" class="contact-item">
             <div class="ci-icon">📞</div>
@@ -469,19 +469,21 @@
       </div>
       <div class="contact-form-wrap fade-up">
         <div class="form-title">Send a message</div>
-        <div class="form-row">
-          <label class="form-label">Your Name</label>
-          <input type="text" class="form-input" placeholder="John Doe">
-        </div>
-        <div class="form-row">
-          <label class="form-label">Email Address</label>
-          <input type="email" class="form-input" placeholder="john@example.com">
-        </div>
-        <div class="form-row">
-          <label class="form-label">Message</label>
-          <textarea class="form-input" placeholder="Hi Kashyap, I'd like to discuss..."></textarea>
-        </div>
-        <button class="form-btn" onclick="handleSubmit(this)">Send Message →</button>
+        <form id="contactForm">
+          <div class="form-row">
+            <label class="form-label">Your Name</label>
+            <input type="text" name="name" class="form-input" placeholder="John Doe" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Email Address</label>
+            <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Message</label>
+            <textarea name="message" class="form-input" placeholder="Hi Kashyap, I'd like to discuss..." required></textarea>
+          </div>
+          <button type="submit" class="form-btn" id="submitBtn">Send Message →</button>
+        </form>
       </div>
     </div>
   </div>
@@ -494,7 +496,7 @@
   <div>Built with ♥</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Dark / Light Mode
   const themeBtn = document.getElementById('themeBtn');
   const html = document.documentElement;
@@ -553,22 +555,43 @@
       if (e.isIntersecting) {
         e.target.classList.add('visible', 'in-view');
         io.unobserve(e.target);
-      }
+            }
     });
   }, { threshold: 0.15 });
-
   document.querySelectorAll('.fade-up, .skill-card').forEach(el => io.observe(el));
 
-  // Form submit
-  function handleSubmit(btn) {
-    btn.textContent = 'Sending...';
-    btn.style.background = '#6b7280';
-    setTimeout(() => {
-      btn.textContent = '✓ Message Sent!';
-      btn.style.background = '#10b981';
-      btn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.4)';
-    }, 1400);
-  }
+  // Formspree Contact Form
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.textContent = 'Sending...';
+    submitBtn.style.background = '#6b7280';
+    submitBtn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/mnjbboad', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (res.ok) {
+        submitBtn.textContent = '✓ Message Sent!';
+        submitBtn.style.background = '#10b981';
+        submitBtn.style.boxShadow = '0 4px 14px rgba(16,185,129,0.4)';
+        form.reset();
+      } else {
+        submitBtn.textContent = '✗ Failed. Try again.';
+        submitBtn.style.background = '#ef4444';
+        submitBtn.disabled = false;
+      }
+    } catch {
+      submitBtn.textContent = '✗ Network error.';
+      submitBtn.style.background = '#ef4444';
+      submitBtn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
