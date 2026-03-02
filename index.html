@@ -302,8 +302,8 @@
       <p class="hero-subtitle">Dynamic Cloud Infrastructure Engineer with 5+ years of experience in OCI, Linux/Windows administration, and virtualization (OLVM, VMware). Specialized in network security, firewall administration, and infrastructure automation with Terraform.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn btn-primary">View My Work →</a>
-        <a href="https://kashyapparmar1998.github.io/resume.pdf" download class="btn-resume">⬇ Download Resume</a>
-        <a href="/cdn-cgi/l/email-protection#83e8e2f0ebfae2f3f3e2f1eee2f1b2bababbc3e4eee2eaefade0ecee" class="btn btn-ghost">Get in Touch</a>
+        <a href="https://kashyapparmar1998.github.io/Resume__2_.pdf" download="Kashyap_Parmar_Resume.pdf" class="btn-resume">⬇ Download Resume</a>
+        <a href="#" onclick="window.location='mai'+'lto:'+'kashyapparmar1998'+'@'+'gmail.com'; return false;" class="btn btn-ghost">Get in Touch</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -370,7 +370,7 @@
         </div>
         <div class="info-card">
           <div class="info-icon">📧</div>
-          <div><div class="info-key">Email</div><div class="info-val"><a href="/cdn-cgi/l/email-protection#7b101a0813021a0b0b1a09161a094a4242433b1c161a121755181416"><span class="__cf_email__" data-cfemail="a3c8c2d0cbdac2d3d3c2d1cec2d1929a9a9be3c4cec2cacf8dc0ccce">[email&#160;protected]</span></a></div></div>
+          <div><div class="info-key">Email</div><div class="info-val"><a href="#"><span class="js-email"></span></a></div></div>
         </div>
         <div class="info-card">
           <div class="info-icon">📞</div>
@@ -496,9 +496,9 @@
       <div class="contact-left fade-up">
         <p>Looking for a Cloud Infrastructure Engineer who can design, automate, and manage enterprise systems? I'd love to hear about your project or opportunity.</p>
         <div class="contact-items">
-          <a href="/cdn-cgi/l/email-protection#b6ddd7c5decfd7c6c6d7c4dbd7c4878f8f8ef6d1dbd7dfda98d5d9db" class="contact-item">
+          <a href="#" onclick="window.location='mai'+'lto:'+'kashyapparmar1998'+'@'+'gmail.com'; return false;" class="contact-item">
             <div class="ci-icon">✉️</div>
-            <div><div class="ci-label">Email</div><div class="ci-val"><span class="__cf_email__" data-cfemail="2e454f5d46574f5e5e4f5c434f5c1f1717166e49434f4742004d4143">[email&#160;protected]</span></div></div>
+            <div><div class="ci-label">Email</div><div class="ci-val"><span class="js-email"></span></div></div>
           </a>
           <a href="tel:+917016218869" class="contact-item">
             <div class="ci-icon">📞</div>
@@ -543,7 +543,7 @@
         <div class="timeline-dot"></div>
         <div class="timeline-card">
           <div class="timeline-top">
-            <div class="timeline-role">Senior Network Engineer</div>
+            <div class="timeline-role">Cloud Infrastructure Engineer</div>
             <span class="timeline-period">Feb 2023 – Present</span>
           </div>
           <div class="timeline-company">Bankai Informatics Pvt Ltd · Ahmedabad</div>
@@ -649,8 +649,19 @@
   <div>Built with ♥</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // Dark / Light Mode
+<script>
+  // Inject email via JS to bypass Cloudflare email protection
+  const em = 'kashyapparmar1998' + '@' + 'gmail.com';
+  document.querySelectorAll('.js-email').forEach(el => { el.textContent = em; });
+  document.querySelectorAll('a[href="#"]').forEach(a => {
+    if (a.querySelector('.js-email') || a.textContent.includes('kashyap')) {
+      a.href = 'mai' + 'lto:' + em;
+    }
+  });
+  // Fix about section email link
+  document.querySelectorAll('.info-val a[href="#"]').forEach(a => {
+    a.href = 'mai' + 'lto:' + em;
+  });
   const themeBtn = document.getElementById('themeBtn');
   const html = document.documentElement;
 
