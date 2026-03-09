@@ -5,6 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kashyap Parmar | Cloud Infrastructure Engineer</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<!-- Dark mode must load before body to avoid flash -->
+<script>
+(function(){
+  try {
+    if(localStorage.getItem('theme')==='dark'){
+      document.documentElement.setAttribute('data-theme','dark');
+    }
+  } catch(e){}
+  // Expose toggleTheme globally immediately
+  window.toggleTheme = function(){
+    var html = document.documentElement;
+    var btn = document.getElementById('themeBtn');
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    if(isDark){
+      html.removeAttribute('data-theme');
+      if(btn) btn.textContent = '🌙';
+      try{ localStorage.setItem('theme','light'); }catch(e){}
+    } else {
+      html.setAttribute('data-theme','dark');
+      if(btn) btn.textContent = '☀️';
+      try{ localStorage.setItem('theme','dark'); }catch(e){}
+    }
+  };
+  window.toggleMenu = function(){
+    var m = document.getElementById('mobileMenu');
+    if(m) m.classList.toggle('open');
+  };
+  window.closeMenu = function(){
+    var m = document.getElementById('mobileMenu');
+    if(m) m.classList.remove('open');
+  };
+})();
+</script>
 <style>
   :root {
     --bg: #ffffff; --bg2: #f8f9fb; --bg3: #f0f2f5;
@@ -668,41 +701,16 @@
   function getTheme() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
   function setTheme(t) { try { localStorage.setItem('theme', t); } catch(e) {} }
 
-  window.toggleTheme = function() {
-    const html = document.documentElement;
-    const btn = document.getElementById('themeBtn');
-    const isDark = html.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      html.removeAttribute('data-theme');
-      btn.textContent = '🌙';
-      setTheme('light');
-    } else {
-      html.setAttribute('data-theme', 'dark');
+  // Update theme button icon on load
+  (function(){
+    var btn = document.getElementById('themeBtn');
+    if(btn && document.documentElement.getAttribute('data-theme')==='dark'){
       btn.textContent = '☀️';
-      setTheme('dark');
-    }
-  };
-
-  window.toggleMenu = function() {
-    document.getElementById('mobileMenu').classList.toggle('open');
-  };
-
-  window.closeMenu = function() {
-    document.getElementById('mobileMenu').classList.remove('open');
-  };
-
-  // Apply saved theme on load
-  (function() {
-    const html = document.documentElement;
-    const btn = document.getElementById('themeBtn');
-    if (getTheme() === 'dark') {
-      html.setAttribute('data-theme', 'dark');
-      if (btn) btn.textContent = '☀️';
     }
   })();
 
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#hamburger') && !e.target.closest('#mobileMenu')) window.closeMenu();
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('#hamburger') && !e.target.closest('#mobileMenu')) window.closeMenu();
   });
 
   // Scroll bar + Back to top
