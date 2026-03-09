@@ -35,6 +35,9 @@
     transition: background 0.3s, border-color 0.3s;
   }
   [data-theme="dark"] nav { background: rgba(15,17,23,0.92); }
+
+  /* Smooth dark mode transition for all elements */
+  *, *::before, *::after { transition: background-color 0.3s, border-color 0.3s, color 0.3s; }
   .nav-logo { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--text); }
   .nav-logo span { color: var(--accent); }
   .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
@@ -277,7 +280,7 @@
     <li><a href="#contact" class="nav-cta">Contact Me</a></li>
   </ul>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeBtn" title="Toggle dark mode">🌙</button>
+    <button class="theme-toggle" id="themeBtn" title="Toggle dark mode" onclick="toggleTheme()">🌙</button>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
@@ -654,44 +657,52 @@
   const em = 'kashyapparmar1998' + '@' + 'gmail.com';
   document.querySelectorAll('.js-email').forEach(el => { el.textContent = em; });
   document.querySelectorAll('a[href="#"]').forEach(a => {
-    if (a.querySelector('.js-email') || a.textContent.includes('kashyap')) {
+    if (a.querySelector('.js-email')) {
       a.href = 'mai' + 'lto:' + em;
     }
   });
-  // Fix about section email link
   document.querySelectorAll('.info-val a[href="#"]').forEach(a => {
     a.href = 'mai' + 'lto:' + em;
   });
-  const themeBtn = document.getElementById('themeBtn');
-  const html = document.documentElement;
+  // Dark / Light Mode
+  function getTheme() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
+  function setTheme(t) { try { localStorage.setItem('theme', t); } catch(e) {} }
 
-  if (localStorage.getItem('theme') === 'dark') {
-    html.setAttribute('data-theme', 'dark');
-    themeBtn.textContent = '☀️';
-  }
-
-  themeBtn.addEventListener('click', () => {
+  window.toggleTheme = function() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
     const isDark = html.getAttribute('data-theme') === 'dark';
     if (isDark) {
       html.removeAttribute('data-theme');
-      themeBtn.textContent = '🌙';
-      localStorage.setItem('theme', 'light');
+      btn.textContent = '🌙';
+      setTheme('light');
     } else {
       html.setAttribute('data-theme', 'dark');
-      themeBtn.textContent = '☀️';
-      localStorage.setItem('theme', 'dark');
+      btn.textContent = '☀️';
+      setTheme('dark');
     }
-  });
+  };
 
-  // Mobile menu
-  function toggleMenu() {
+  window.toggleMenu = function() {
     document.getElementById('mobileMenu').classList.toggle('open');
-  }
-  function closeMenu() {
+  };
+
+  window.closeMenu = function() {
     document.getElementById('mobileMenu').classList.remove('open');
-  }
+  };
+
+  // Apply saved theme on load
+  (function() {
+    const html = document.documentElement;
+    const btn = document.getElementById('themeBtn');
+    if (getTheme() === 'dark') {
+      html.setAttribute('data-theme', 'dark');
+      if (btn) btn.textContent = '☀️';
+    }
+  })();
+
   document.addEventListener('click', e => {
-    if (!e.target.closest('#hamburger') && !e.target.closest('#mobileMenu')) closeMenu();
+    if (!e.target.closest('#hamburger') && !e.target.closest('#mobileMenu')) window.closeMenu();
   });
 
   // Scroll bar + Back to top
