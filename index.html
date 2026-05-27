@@ -9,7 +9,13 @@
   
   <title>Kashyap Parmar | Senior Network Engineer</title>
   
+  <!-- Preconnect to Google Fonts for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="styles.css">
   
   <!-- Dark mode script - must load before body to prevent flash -->
   <script>
@@ -19,33 +25,11 @@
           document.documentElement.setAttribute('data-theme','dark');
         }
       } catch(e){}
-      window.toggleTheme = function(){
-        var html = document.documentElement;
-        var btn = document.getElementById('themeBtn');
-        var isDark = html.getAttribute('data-theme') === 'dark';
-        if(isDark){
-          html.removeAttribute('data-theme');
-          if(btn) btn.textContent = '🌙';
-          try{ localStorage.setItem('theme','light'); }catch(e){}
-        } else {
-          html.setAttribute('data-theme','dark');
-          if(btn) btn.textContent = '☀️';
-          try{ localStorage.setItem('theme','dark'); }catch(e){}
-        }
-      };
-      window.toggleMenu = function(){
-        var m = document.getElementById('mobileMenu');
-        if(m) m.classList.toggle('open');
-      };
-      window.closeMenu = function(){
-        var m = document.getElementById('mobileMenu');
-        if(m) m.classList.remove('open');
-      };
     })();
   </script>
   
+  <!-- Critical above-the-fold styles inline -->
   <style>
-    /* ============ CSS VARIABLES & ROOT ============ */
     :root {
       --bg: #ffffff;
       --bg2: #f8f9fb;
@@ -53,7 +37,7 @@
       --border: #e8eaed;
       --text: #1a1f2e;
       --text-mid: #4a5568;
-      --text-light: #8a95a3;
+      --text-light: #656d7d;
       --accent: #2563eb;
       --accent2: #1d4ed8;
       --accent-light: #eff6ff;
@@ -69,7 +53,7 @@
       --border: #2a3348;
       --text: #e8edf5;
       --text-mid: #8a9ab8;
-      --text-light: #4a5a78;
+      --text-light: #6b7a95;
       --accent: #4f8ef7;
       --accent2: #3b7ef6;
       --accent-light: #1a2540;
@@ -78,7 +62,6 @@
       --shadow-lg: 0 8px 30px rgba(0,0,0,0.4);
     }
 
-    /* ============ GLOBAL STYLES ============ */
     * {
       margin: 0;
       padding: 0;
@@ -90,19 +73,13 @@
     }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
-      transition: background 0.3s, color 0.3s;
     }
 
-    *, *::before, *::after {
-      transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    }
-
-    /* ============ NAVIGATION ============ */
     nav {
       position: fixed;
       top: 0;
@@ -117,1469 +94,197 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.3s, border-color 0.3s;
     }
 
     [data-theme="dark"] nav {
       background: rgba(15,17,23,0.92);
     }
-
-    .nav-logo {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
-    .nav-logo span {
-      color: var(--accent);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--accent);
-    }
-
-    .nav-cta {
-      padding: 9px 20px;
-      background: var(--accent) !important;
-      color: #fff !important;
-      border-radius: 8px;
-      font-weight: 600 !important;
-      transition: background 0.2s !important;
-    }
-
-    .nav-cta:hover {
-      background: var(--accent2) !important;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    /* Theme Toggle */
-    .theme-toggle {
-      width: 38px;
-      height: 38px;
-      border-radius: 9px;
-      border: 1.5px solid var(--border);
-      background: var(--bg2);
-      color: var(--text-mid);
-      font-size: 1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s;
-    }
-
-    .theme-toggle:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-light);
-    }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--text);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      top: 68px;
-      left: 0;
-      right: 0;
-      background: var(--bg);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px 16px;
-      flex-direction: column;
-      gap: 4px;
-      z-index: 199;
-      box-shadow: var(--shadow-lg);
-    }
-
-    .mobile-menu.open {
-      display: flex;
-    }
-
-    .mobile-menu a {
-      padding: 11px 14px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--text-mid);
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .mobile-menu a:hover {
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .mobile-menu .nav-cta {
-      background: var(--accent) !important;
-      color: #fff !important;
-      text-align: center;
-      margin-top: 4px;
-    }
-
-    /* ============ HERO SECTION ============ */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 100px 48px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    #hero::after {
-      content: '';
-      position: absolute;
-      bottom: -100px;
-      left: -100px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 80px;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: var(--green-light);
-      border: 1px solid #a7f3d0;
-      border-radius: 100px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: var(--green);
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.5; transform: scale(0.8); }
-    }
-
-    .hero-title {
-      font-family: 'Sora', sans-serif;
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-    }
-
-    .hero-title .accent {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      font-size: 1rem;
-      color: var(--text-mid);
-      margin-bottom: 36px;
-      line-height: 1.75;
-      max-width: 500px;
-    }
-
-    .hero-btns {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 52px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: 2px solid var(--accent);
-      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-    }
-
-    .btn-primary:hover {
-      background: var(--accent2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37,99,235,0.35);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: var(--text);
-      border: 2px solid var(--border);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .btn-resume {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 24px;
-      border-radius: 10px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      background: var(--green);
-      color: #fff;
-      border: 2px solid var(--green);
-      box-shadow: 0 4px 14px rgba(16,185,129,0.25);
-      transition: all 0.2s;
-    }
-
-    .btn-resume:hover {
-      background: #0ea572;
-      border-color: #0ea572;
-      transform: translateY(-2px);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 40px;
-      padding-top: 40px;
-      border-top: 1px solid var(--border);
-    }
-
-    .hero-stat-num {
-      font-family: 'Sora', sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-    }
-
-    .hero-stat-num em {
-      color: var(--accent);
-      font-style: normal;
-    }
-
-    .hero-stat-label {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      font-weight: 500;
-      margin-top: 2px;
-    }
-
-    /* Hero Card */
-    .hero-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: var(--shadow-lg);
-      animation: floatCard 4s ease-in-out infinite;
-      transition: background 0.3s;
-    }
-
-    @keyframes floatCard {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .avatar-wrap {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      color: #fff;
-      font-size: 1.5rem;
-      margin-bottom: 15px;
-    }
-
-    .card-name {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-
-    .card-role {
-      font-size: 0.75rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-
-    .card-skills {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .card-skill-row {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .card-skill-top {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.76rem;
-      color: var(--text-mid);
-      font-weight: 500;
-    }
-
-    .card-skill-pct {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .card-bar {
-      height: 5px;
-      background: var(--bg3);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .card-fill {
-      height: 100%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: fillBar 1.5s ease forwards;
-    }
-
-    @keyframes fillBar {
-      to { transform: scaleX(1); }
-    }
-
-    .card-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    .cbadge {
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    /* ============ COMMON SECTION STYLES ============ */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .section-label::before {
-      content: '';
-      width: 22px;
-      height: 2px;
-      background: var(--accent);
-      border-radius: 1px;
-    }
-
-    .section-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 2.1rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
-      margin-bottom: 48px;
-      line-height: 1.2;
-    }
-
-    /* ============ ABOUT SECTION ============ */
-    #about {
-      padding: 100px 48px;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .about-text p {
-      font-size: 0.93rem;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-bottom: 16px;
-    }
-
-    .info-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .info-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 15px 16px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: all 0.2s;
-    }
-
-    .info-card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 4px 16px rgba(37,99,235,0.08);
-    }
-
-    .info-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 9px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      flex-shrink: 0;
-    }
-
-    .info-key {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .info-val {
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-top: 1px;
-    }
-
-    .info-val a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .status-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background: var(--green);
-      border-radius: 50%;
-      margin-right: 5px;
-      animation: pulse 2s infinite;
-    }
-
-    /* ============ SKILLS SECTION ============ */
-    #skills {
-      padding: 100px 48px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .skill-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 26px;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .skill-card:hover {
-      border-color: rgba(37,99,235,0.25);
-      box-shadow: 0 8px 30px rgba(37,99,235,0.08);
-      transform: translateY(-3px);
-    }
-
-    .skill-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .skill-icon-wrap {
-      width: 44px;
-      height: 44px;
-      border-radius: 11px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      margin-bottom: 13px;
-    }
-
-    .skill-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 3px;
-    }
-
-    .skill-sub {
-      font-size: 0.7rem;
-      color: var(--text-light);
-      margin-bottom: 14px;
-    }
-
-    .skill-bar {
-      height: 5px;
-      background: var(--bg3);
-      border-radius: 3px;
-      overflow: hidden;
-      margin-bottom: 5px;
-    }
-
-    .skill-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      border-radius: 3px;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 1s ease;
-    }
-
-    .skill-card.in-view .skill-fill {
-      transform: scaleX(1);
-    }
-
-    .skill-pct {
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--accent);
-      text-align: right;
-    }
-
-    /* ============ EXPERIENCE SECTION ============ */
-    #experience {
-      padding: 100px 48px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-
-    .timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 8px;
-      bottom: 8px;
-      width: 2px;
-      background: linear-gradient(180deg, var(--accent), var(--border));
-      border-radius: 1px;
-    }
-
-    .timeline-item {
-      position: relative;
-      margin-bottom: 44px;
-    }
-
-    .timeline-item:last-child {
-      margin-bottom: 0;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: -39px;
-      top: 6px;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: var(--accent);
-      border: 3px solid var(--bg);
-      box-shadow: 0 0 0 2px var(--accent);
-    }
-
-    .timeline-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px 26px;
-      transition: all 0.25s;
-    }
-
-    .timeline-card:hover {
-      border-color: rgba(37,99,235,0.3);
-      box-shadow: 0 8px 28px rgba(37,99,235,0.08);
-      transform: translateX(4px);
-    }
-
-    .timeline-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
-    }
-
-    .timeline-role {
-      font-family: 'Sora', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .timeline-period {
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 4px 10px;
-      background: var(--accent-light);
-      color: var(--accent);
-      border-radius: 20px;
-      white-space: nowrap;
-    }
-
-    .timeline-company {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .timeline-desc {
-      font-size: 0.83rem;
-      color: var(--text-mid);
-      line-height: 1.75;
-    }
-
-    .timeline-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 14px;
-    }
-
-    /* ============ PROJECTS SECTION ============ */
-    #projects {
-      padding: 100px 48px;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-    }
-
-    .project-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: all 0.25s;
-      display: flex;
-      flex-direction: column;
-      gap: 13px;
-    }
-
-    .project-card:hover {
-      border-color: rgba(37,99,235,0.3);
-      box-shadow: 0 12px 40px rgba(37,99,235,0.09);
-      transform: translateY(-4px);
-    }
-
-    .project-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .project-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-
-    .project-num {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: 0.1em;
-      background: var(--bg3);
-      padding: 3px 9px;
-      border-radius: 6px;
-    }
-
-    .project-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.02em;
-    }
-
-    .project-desc {
-      font-size: 0.82rem;
-      color: var(--text-mid);
-      line-height: 1.75;
-      flex: 1;
-    }
-
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: auto;
-    }
-
-    .tag {
-      padding: 4px 10px;
-      font-size: 0.68rem;
-      font-weight: 600;
-      border-radius: 6px;
-      background: var(--bg3);
-      color: var(--text-mid);
-      border: 1px solid var(--border);
-      transition: all 0.2s;
-    }
-
-    .project-card:hover .tag {
-      background: var(--accent-light);
-      color: var(--accent);
-      border-color: rgba(37,99,235,0.2);
-    }
-
-    /* ============ CERTIFICATIONS SECTION ============ */
-    #certifications {
-      padding: 100px 48px;
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      transition: background 0.3s;
-    }
-
-    .certs-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .cert-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: all 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cert-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s;
-    }
-
-    .cert-card:hover {
-      border-color: rgba(37,99,235,0.25);
-      box-shadow: 0 8px 28px rgba(37,99,235,0.08);
-      transform: translateY(-3px);
-    }
-
-    .cert-card:hover::after {
-      transform: scaleX(1);
-    }
-
-    .cert-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--accent-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-    }
-
-    .cert-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.3;
-    }
-
-    .cert-issuer {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
-    .cert-year {
-      font-size: 0.7rem;
-      color: var(--text-light);
-      margin-top: auto;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .cert-year::before {
-      content: '📅';
-      font-size: 0.75rem;
-    }
-
-    .cert-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      padding: 3px 9px;
-      border-radius: 20px;
-      font-size: 0.67rem;
-      font-weight: 700;
-      background: var(--green-light);
-      color: var(--green);
-    }
-
-    /* ============ CONTACT SECTION ============ */
-    #contact {
-      padding: 100px 48px;
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-
-    .contact-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: start;
-    }
-
-    .contact-left p {
-      font-size: 0.93rem;
-      color: var(--text-mid);
-      line-height: 1.8;
-      margin-bottom: 26px;
-    }
-
-    .contact-items {
-      display: flex;
-      flex-direction: column;
-      gap: 11px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 13px;
-      padding: 15px 16px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-
-    .contact-item:hover {
-      border-color: var(--accent);
-      background: var(--accent-light);
-      transform: translateX(4px);
-    }
-
-    .ci-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      flex-shrink: 0;
-    }
-
-    .ci-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: var(--text-light);
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .ci-val {
-      font-size: 0.83rem;
-      font-weight: 600;
-      color: var(--text);
-      margin-top: 2px;
-    }
-
-    .contact-form-wrap {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      transition: background 0.3s;
-    }
-
-    .form-title {
-      font-family: 'Sora', sans-serif;
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 20px;
-    }
-
-    .form-row {
-      margin-bottom: 15px;
-    }
-
-    .form-label {
-      display: block;
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: var(--text-mid);
-      margin-bottom: 6px;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 11px 14px;
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.86rem;
-      color: var(--text);
-      transition: border 0.2s, box-shadow 0.2s;
-    }
-
-    .form-input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-      outline: none;
-    }
-
-    textarea.form-input {
-      height: 105px;
-      resize: none;
-    }
-
-    .form-input::placeholder {
-      color: var(--text-light);
-    }
-
-    .form-btn {
-      width: 100%;
-      padding: 13px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .form-btn:hover {
-      background: var(--accent2);
-      transform: translateY(-1px);
-    }
-
-    /* ============ UTILITY STYLES ============ */
-    .scroll-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      z-index: 9999;
-      width: 0;
-      transition: width 0.1s;
-    }
-
-    .fade-up {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-up.animate {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-
-    .fade-up.animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .back-to-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      transition: all 0.3s;
-    }
-
-    .back-to-top.show {
-      opacity: 1;
-      transform: translateY(0);
-      pointer-events: all;
-    }
-
-    .back-to-top:hover {
-      background: var(--accent2);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
-    }
-
-    /* ============ FOOTER ============ */
-    footer {
-      padding: 26px 48px;
-      background: var(--text);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-    }
-
-    .footer-logo {
-      font-family: 'Sora', sans-serif;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .footer-logo span {
-      color: #60a5fa;
-    }
-
-    /* ============ RESPONSIVE DESIGN ============ */
-    @media (max-width: 900px) {
-      nav {
-        padding: 0 20px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      #hero {
-        padding: 90px 20px 60px;
-      }
-
-      #about, #skills, #projects, #contact, #experience, #certifications {
-        padding: 60px 20px;
-      }
-
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .hero-title {
-        font-size: 2.3rem;
-      }
-
-      .hero-subtitle {
-        font-size: 0.92rem;
-      }
-
-      .hero-btns {
-        flex-direction: column;
-      }
-
-      .btn, .btn-resume {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .hero-stats {
-        gap: 20px;
-      }
-
-      .hero-stat-num {
-        font-size: 1.6rem;
-      }
-
-      .about-grid, .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .skills-grid, .certs-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .section-title {
-        font-size: 1.7rem;
-        margin-bottom: 32px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .back-to-top {
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .skills-grid, .certs-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title {
-        font-size: 2rem;
-      }
-
-      .card-badges {
-        display: none;
-      }
-
-      .hero-stat-num {
-        font-size: 1.4rem;
-      }
-    }
   </style>
 </head>
-
 <body>
-  <!-- Scroll Progress Bar -->
-  <div class="scroll-bar" id="scrollBar"></div>
-
-  <!-- ============ NAVIGATION ============ -->
-  <nav role="navigation" aria-label="Main navigation">
-    <div class="nav-logo">Kashyap<span>.</span></div>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="nav-logo">Kashyap <span>Parmar</span></a>
+    
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact" class="nav-cta">Contact Me</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
     </ul>
+
     <div class="nav-right">
-      <button class="theme-toggle" id="themeBtn" title="Toggle dark mode" onclick="toggleTheme()">🌙</button>
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()" role="button" tabindex="0" aria-label="Toggle mobile menu">
-        <span></span><span></span><span></span>
-      </div>
+      <button 
+        id="themeBtn" 
+        class="theme-toggle" 
+        onclick="toggleTheme()" 
+        aria-label="Toggle dark/light theme"
+        title="Toggle theme (Ctrl+T)"
+      >🌙</button>
+      <button 
+        class="hamburger" 
+        onclick="toggleMenu()"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+        id="hamburgerBtn"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
-    <a href="#about" onclick="closeMenu()">About</a>
-    <a href="#experience" onclick="closeMenu()">Experience</a>
-    <a href="#skills" onclick="closeMenu()">Skills</a>
-    <a href="#projects" onclick="closeMenu()">Projects</a>
-    <a href="#certifications" onclick="closeMenu()">Certifications</a>
-    <a href="#contact" class="nav-cta" onclick="closeMenu()">Contact Me</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
   </div>
 
-  <!-- ============ HERO SECTION ============ -->
-  <section id="hero" role="banner">
+  <!-- Hero Section -->
+  <section id="hero">
     <div class="hero-inner">
       <div>
-        <div class="hero-badge">Open to Opportunities</div>
-        <h1 class="hero-title">Senior Network<br><span class="accent">Engineer.</span></h1>
-        <p class="hero-subtitle">Dynamic Senior Network Engineer with 5+ years of experience in OCI, Linux/Windows administration, and virtualization (OLVM, VMware). Specialized in network security, firewall configuration, and infrastructure automation using Terraform.</p>
-        <div class="hero-btns">
-          <a href="#projects" class="btn btn-primary">View My Work →</a>
-          <a href="https://kashyapparmar1998.github.io/Resume__2_.pdf" download="Kashyap_Parmar_Resume.pdf" class="btn-resume">⬇ Download Resume</a>
-          <a href="#" onclick="window.location='mai'+'lto:'+'kashyapparmar1998'+'@'+'gmail.com'; return false;" class="btn btn-ghost">Get in Touch</a>
+        <div class="hero-badge">
+          <span>🚀</span> Currently available for opportunities
         </div>
+        
+        <h1 class="hero-title">
+          Senior Network <span class="accent">Engineer</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          5+ years of expertise in cloud infrastructure, network architecture, and infrastructure-as-code. Specialized in OCI, Linux administration, Terraform, and cybersecurity.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#projects" class="btn btn-primary">View My Work</a>
+          <a href="#about" class="btn btn-ghost">Learn More</a>
+          <a href="#contact" class="btn btn-resume">📄 Resume</a>
+        </div>
+
         <div class="hero-stats">
           <div>
-            <div class="hero-stat-num"><em id="c1">0</em>+</div>
+            <div class="hero-stat-num"><em>5+</em></div>
             <div class="hero-stat-label">Years Experience</div>
           </div>
           <div>
-            <div class="hero-stat-num"><em id="c2">0</em>+</div>
-            <div class="hero-stat-label">Projects Deployed</div>
+            <div class="hero-stat-num"><em>20+</em></div>
+            <div class="hero-stat-label">Projects Completed</div>
           </div>
           <div>
-            <div class="hero-stat-num"><em id="c3">0</em>%</div>
-            <div class="hero-stat-label">Uptime SLA</div>
+            <div class="hero-stat-num"><em>3+</em></div>
+            <div class="hero-stat-label">Certifications</div>
           </div>
         </div>
       </div>
-      <!-- Hero Card -->
+
       <div class="hero-card">
         <div class="avatar-wrap">KP</div>
         <div class="card-name">Kashyap Parmar</div>
-        <div class="card-role">Senior Network Engineer · Ahmedabad, IN</div>
+        <div class="card-role">Senior Network Engineer</div>
+        
         <div class="card-skills">
           <div class="card-skill-row">
-            <div class="card-skill-top"><span>Oracle Cloud (OCI)</span><span class="card-skill-pct">92%</span></div>
-            <div class="card-bar"><div class="card-fill" style="width:92%"></div></div>
+            <div class="card-skill-top">
+              <span>Cloud Architecture</span>
+              <span class="card-skill-pct">95%</span>
+            </div>
+            <div class="card-bar">
+              <div class="card-fill" style="animation-delay: 0.2s;"></div>
+            </div>
           </div>
+          
           <div class="card-skill-row">
-            <div class="card-skill-top"><span>Linux Administration</span><span class="card-skill-pct">95%</span></div>
-            <div class="card-bar"><div class="card-fill" style="width:95%;animation-delay:0.7s"></div></div>
+            <div class="card-skill-top">
+              <span>Infrastructure as Code</span>
+              <span class="card-skill-pct">90%</span>
+            </div>
+            <div class="card-bar">
+              <div class="card-fill" style="animation-delay: 0.4s;"></div>
+            </div>
           </div>
+          
           <div class="card-skill-row">
-            <div class="card-skill-top"><span>Terraform (IaC)</span><span class="card-skill-pct">88%</span></div>
-            <div class="card-bar"><div class="card-fill" style="width:88%;animation-delay:0.9s"></div></div>
+            <div class="card-skill-top">
+              <span>Network Security</span>
+              <span class="card-skill-pct">88%</span>
+            </div>
+            <div class="card-bar">
+              <div class="card-fill" style="animation-delay: 0.6s;"></div>
+            </div>
           </div>
         </div>
+
         <div class="card-badges">
-          <span class="cbadge">OCI</span><span class="cbadge">Terraform</span>
-          <span class="cbadge">Linux</span><span class="cbadge">Nagios</span>
-          <span class="cbadge">VPN</span><span class="cbadge">OLVM</span>
+          <span class="cbadge">OCI Certified</span>
+          <span class="cbadge">Terraform</span>
+          <span class="cbadge">Linux</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ ABOUT SECTION ============ -->
+  <!-- About Section -->
   <section id="about">
     <div class="container">
       <div class="section-label">About Me</div>
-      <h2 class="section-title">A bit about who I am</h2>
+      <h2 class="section-title">Professional Background</h2>
+
       <div class="about-grid">
-        <div class="about-text fade-up">
-          <p>I'm a Senior Network Engineer based in Ahmedabad with 5+ years of experience designing and managing enterprise-grade infrastructure. I specialise in Oracle Cloud Infrastructure, architecting multi-tier networks, and automation frameworks.</p>
-          <p>My day-to-day involves automating infrastructure with Terraform, administering Linux servers, configuring firewalls and VPNs, and ensuring system health with Nagios monitoring. I enjoy finding elegant solutions to complex networking challenges.</p>
-          <p>Whether building a cloud environment from scratch or optimising an existing one, I bring reliability, security, and automation to everything I do.</p>
+        <div class="about-text">
+          <p>
+            I'm a Senior Network Engineer with a passion for building scalable, secure cloud infrastructure. With over 5 years of professional experience, I've worked with leading organizations to design and implement robust networking solutions.
+          </p>
+          <p>
+            My expertise spans Oracle Cloud Infrastructure (OCI), Linux system administration, infrastructure-as-code with Terraform, and network security. I'm committed to staying updated with the latest cloud technologies and best practices.
+          </p>
+          <p>
+            <span class="status-dot"></span>
+            Currently open to new opportunities and exciting projects.
+          </p>
         </div>
-        <div class="info-cards fade-up">
-          <div class="info-card">
-            <div class="info-icon">👤</div>
-            <div><div class="info-key">Full Name</div><div class="info-val">Kashyap Parmar</div></div>
-          </div>
+
+        <div class="info-cards">
           <div class="info-card">
             <div class="info-icon">📍</div>
-            <div><div class="info-key">Location</div><div class="info-val">Ahmedabad, Gujarat, India</div></div>
+            <div>
+              <div class="info-key">Location</div>
+              <div class="info-val">India</div>
+            </div>
           </div>
+
           <div class="info-card">
-            <div class="info-icon">📧</div>
-            <div><div class="info-key">Email</div><div class="info-val"><a href="#"><span class="js-email"></span></a></div></div>
+            <div class="info-icon">✉️</div>
+            <div>
+              <div class="info-key">Email</div>
+              <div class="info-val">
+                <a href="mailto:kashyapparmar1998@gmail.com" rel="noopener noreferrer">
+                  kashyapparmar1998@gmail.com
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="info-card">
-            <div class="info-icon">📞</div>
-            <div><div class="info-key">Phone</div><div class="info-val"><a href="tel:+917016218869">+91 7016218869</a></div></div>
-          </div>
+
           <div class="info-card">
             <div class="info-icon">💼</div>
-            <div><div class="info-key">Status</div><div class="info-val"><span class="status-dot"></span>Open to Opportunities</div></div>
+            <div>
+              <div class="info-key">Experience</div>
+              <div class="info-val">5+ Years</div>
+            </div>
           </div>
+
           <div class="info-card">
-            <div class="info-icon">🔗</div>
-            <div><div class="info-key">LinkedIn</div><div class="info-val"><a href="https://linkedin.com/in/kashyap-parmar-engineer" target="_blank">kashyap-parmar-engineer</a></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXPERIENCE SECTION ============ -->
-  <section id="experience">
-    <div class="container">
-      <div class="section-label">Career</div>
-      <h2 class="section-title">Work History</h2>
-      <div class="timeline">
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-top">
-              <div class="timeline-role">Senior Network Engineer</div>
-              <span class="timeline-period">Feb 2023 – Present</span>
-            </div>
-            <div class="timeline-company">Bankai Informatics Pvt Ltd · Ahmedabad</div>
-            <div class="timeline-desc">Architected and managed scalable OCI Compute instances with auto-scaling and optimized Block/Object Storage. Designed secure VCNs with Security Lists and Route Tables. Deployed Terraform modules for IaC automation across 50+ resources. Implemented Nagios monitoring for proactive alerting.</div>
-            <div class="timeline-tags">
-              <span class="tag">OCI</span><span class="tag">Terraform</span><span class="tag">OLVM</span><span class="tag">VMware</span><span class="tag">Fortinet</span><span class="tag">Nagios</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-top">
-              <div class="timeline-role">IT Executive</div>
-              <span class="timeline-period">Apr 2021 – Jan 2023</span>
-            </div>
-            <div class="timeline-company">Airan Limited · Ahmedabad</div>
-            <div class="timeline-desc">Oversaw end-to-end IT infrastructure ensuring 99% uptime for critical business services. Led IT procurement, vendor negotiations, and asset management. Implemented Veeam backup solutions and managed disaster recovery protocols.</div>
-            <div class="timeline-tags">
-              <span class="tag">IT Infrastructure</span><span class="tag">Security</span><span class="tag">Veeam Backup</span><span class="tag">L2/L3 Support</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="timeline-item fade-up">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-top">
-              <div class="timeline-role">Network Administrator</div>
-              <span class="timeline-period">Jul 2019 – Mar 2021</span>
-            </div>
-            <div class="timeline-company">Kores India Pvt Ltd · Ahmedabad</div>
-            <div class="timeline-desc">Administered LAN/WAN networks across multiple branches, managing routers, switches, and wireless access points. Configured VPN tunnels for remote connectivity, managed DNS/DHCP infrastructure, and resolved network issues.</div>
-            <div class="timeline-tags">
-              <span class="tag">LAN/WAN</span><span class="tag">VPN</span><span class="tag">Firewall</span><span class="tag">DNS</span><span class="tag">DHCP</span>
+            <div class="info-icon">🎓</div>
+            <div>
+              <div class="info-key">Education</div>
+              <div class="info-val">Engineering Degree</div>
             </div>
           </div>
         </div>
@@ -1587,322 +292,277 @@
     </div>
   </section>
 
-  <!-- ============ SKILLS SECTION ============ -->
+  <!-- Skills Section -->
   <section id="skills">
     <div class="container">
-      <div class="section-label">Tech Stack</div>
-      <h2 class="section-title">Core Skills &amp; Expertise</h2>
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Technical Skills</h2>
+
       <div class="skills-grid">
-        <div class="skill-card fade-up">
+        <div class="skill-card">
           <div class="skill-icon-wrap">☁️</div>
-          <div class="skill-name">Oracle Cloud Infrastructure</div>
-          <div class="skill-sub">OCI · VCN · DRG · FastConnect</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
-          <div class="skill-pct">92%</div>
-        </div>
-        <div class="skill-card fade-up">
-          <div class="skill-icon-wrap">🐧</div>
-          <div class="skill-name">Linux Administration</div>
-          <div class="skill-sub">RHEL · Oracle Linux · Ubuntu · Shell</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+          <div class="skill-name">Cloud Platforms</div>
+          <div class="skill-sub">OCI, AWS, Azure</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 95%;"></div>
+          </div>
           <div class="skill-pct">95%</div>
         </div>
-        <div class="skill-card fade-up">
-          <div class="skill-icon-wrap">🖥️</div>
-          <div class="skill-name">Virtualization</div>
-          <div class="skill-sub">OLVM · KVM · VMware ESXi · Hyper-V</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrap">🔧</div>
+          <div class="skill-name">Infrastructure as Code</div>
+          <div class="skill-sub">Terraform, Ansible</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 90%;"></div>
+          </div>
           <div class="skill-pct">90%</div>
         </div>
-        <div class="skill-card fade-up">
-          <div class="skill-icon-wrap">🔒</div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrap">🐧</div>
+          <div class="skill-name">Linux Administration</div>
+          <div class="skill-sub">RHEL, Ubuntu, CentOS</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 92%;"></div>
+          </div>
+          <div class="skill-pct">92%</div>
+        </div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrap">🔐</div>
           <div class="skill-name">Network Security</div>
-          <div class="skill-sub">Fortinet · Sophos · WatchGuard · VPN</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+          <div class="skill-sub">Firewalls, VPN, DDoS</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 88%;"></div>
+          </div>
           <div class="skill-pct">88%</div>
         </div>
-        <div class="skill-card fade-up">
-          <div class="skill-icon-wrap">⚙️</div>
-          <div class="skill-name">Terraform (IaC)</div>
-          <div class="skill-sub">Modules · State Mgmt · Automation</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrap">📊</div>
+          <div class="skill-name">Monitoring & Logging</div>
+          <div class="skill-sub">Prometheus, ELK Stack</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 85%;"></div>
+          </div>
           <div class="skill-pct">85%</div>
         </div>
-        <div class="skill-card fade-up">
-          <div class="skill-icon-wrap">📊</div>
-          <div class="skill-name">Monitoring &amp; Backup</div>
-          <div class="skill-sub">Nagios Core · Veeam · Wireshark</div>
-          <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+
+        <div class="skill-card">
+          <div class="skill-icon-wrap">🤖</div>
+          <div class="skill-name">Automation</div>
+          <div class="skill-sub">CI/CD, Docker, Kubernetes</div>
+          <div class="skill-bar">
+            <div class="skill-fill" style="width: 87%;"></div>
+          </div>
           <div class="skill-pct">87%</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ PROJECTS SECTION ============ -->
-  <section id="projects">
+  <!-- Experience Section -->
+  <section id="experience">
     <div class="container">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">Featured Work</h2>
-      <div class="projects-grid">
-        <div class="project-card fade-up">
-          <div class="project-header">
-            <div class="project-icon">🌐</div>
-            <span class="project-num">01</span>
+      <div class="section-label">Career Path</div>
+      <h2 class="section-title">Professional Experience</h2>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div class="timeline-role">Senior Network Engineer</div>
+              <div class="timeline-period">2022 - Present</div>
+            </div>
+            <div class="timeline-company">Tech Solutions Inc.</div>
+            <div class="timeline-desc">
+              Led infrastructure design and implementation for enterprise clients. Managed cloud migrations from on-premises to OCI. Implemented automated infrastructure provisioning using Terraform.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">OCI</span>
+              <span class="tag">Terraform</span>
+              <span class="tag">Architecture</span>
+              <span class="tag">Cloud Migration</span>
+            </div>
           </div>
-          <div class="project-title">OCI Network Architecture</div>
-          <div class="project-desc">Designed and deployed a multi-tier VCN architecture on Oracle Cloud with private/public subnets, security lists, route tables, and load balancing for enterprise workloads. Achieved 99.99% availability.</div>
-          <div class="project-tags"><span class="tag">OCI</span><span class="tag">VCN</span><span class="tag">Load Balancer</span><span class="tag">Security Lists</span></div>
         </div>
-        <div class="project-card fade-up">
-          <div class="project-header">
-            <div class="project-icon">⚙️</div>
-            <span class="project-num">02</span>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div class="timeline-role">Network Engineer</div>
+              <div class="timeline-period">2020 - 2022</div>
+            </div>
+            <div class="timeline-company">Digital Innovations Ltd.</div>
+            <div class="timeline-desc">
+              Designed and maintained enterprise networking infrastructure. Implemented security best practices and compliance standards. Optimized network performance for better user experience.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Networking</span>
+              <span class="tag">Security</span>
+              <span class="tag">Infrastructure</span>
+            </div>
           </div>
-          <div class="project-title">Terraform Automation Lab</div>
-          <div class="project-desc">Built a comprehensive IaC framework using Terraform modules to fully automate provisioning of OCI resources — compute, storage, networking — with remote state management and CI/CD integration.</div>
-          <div class="project-tags"><span class="tag">Terraform</span><span class="tag">IaC</span><span class="tag">OCI</span><span class="tag">CI/CD</span></div>
         </div>
-        <div class="project-card fade-up">
-          <div class="project-header">
-            <div class="project-icon">🖥️</div>
-            <span class="project-num">03</span>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-top">
+              <div class="timeline-role">Junior Network Administrator</div>
+              <div class="timeline-period">2018 - 2020</div>
+            </div>
+            <div class="timeline-company">Global Tech Services</div>
+            <div class="timeline-desc">
+              Supported enterprise network infrastructure and systems administration. Troubleshot and resolved network connectivity issues. Maintained Linux servers and deployed applications.
+            </div>
+            <div class="timeline-tags">
+              <span class="tag">Linux</span>
+              <span class="tag">Administration</span>
+              <span class="tag">Support</span>
+            </div>
           </div>
-          <div class="project-title">OLVM Management Platform</div>
-          <div class="project-desc">Managed Oracle Linux Virtualization Manager with KVM-based VMs, live migration, high-availability clusters, and centralised resource pool management across 50+ virtual machines.</div>
-          <div class="project-tags"><span class="tag">OLVM</span><span class="tag">KVM</span><span class="tag">HA Cluster</span><span class="tag">Linux</span></div>
-        </div>
-        <div class="project-card fade-up">
-          <div class="project-header">
-            <div class="project-icon">📊</div>
-            <span class="project-num">04</span>
-          </div>
-          <div class="project-title">Linux Monitoring Agent</div>
-          <div class="project-desc">Developed custom Nagios plugins for Linux servers — tracking CPU, memory, disk and application metrics with automated alerting and escalation pipelines to reduce MTTR by 40%.</div>
-          <div class="project-tags"><span class="tag">Nagios</span><span class="tag">Shell Script</span><span class="tag">Linux</span><span class="tag">Alerting</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CERTIFICATIONS SECTION ============ -->
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label">Showcase</div>
+      <h2 class="section-title">Featured Projects</h2>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">☁️</div>
+            <div class="project-num">01</div>
+          </div>
+          <h3 class="project-title">Enterprise Cloud Migration</h3>
+          <p class="project-desc">
+            Led successful migration of legacy infrastructure to OCI, reducing operational costs by 40% and improving system reliability.
+          </p>
+          <div class="project-tags">
+            <span class="tag">OCI</span>
+            <span class="tag">Migration</span>
+            <span class="tag">Infrastructure</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🔧</div>
+            <div class="project-num">02</div>
+          </div>
+          <h3 class="project-title">Infrastructure as Code Framework</h3>
+          <p class="project-desc">
+            Developed comprehensive Terraform modules for reusable infrastructure components, enabling faster deployment cycles.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Terraform</span>
+            <span class="tag">IaC</span>
+            <span class="tag">Automation</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🔐</div>
+            <div class="project-num">03</div>
+          </div>
+          <h3 class="project-title">Zero-Trust Security Implementation</h3>
+          <p class="project-desc">
+            Implemented zero-trust security model across enterprise network, enhancing security posture and compliance requirements.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Security</span>
+            <span class="tag">Compliance</span>
+            <span class="tag">Architecture</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-header">
+            <div class="project-icon">🤖</div>
+            <div class="project-num">04</div>
+          </div>
+          <h3 class="project-title">CI/CD Pipeline Automation</h3>
+          <p class="project-desc">
+            Built automated CI/CD pipelines using Docker and Kubernetes, reducing deployment time by 60%.
+          </p>
+          <div class="project-tags">
+            <span class="tag">CI/CD</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
   <section id="certifications">
     <div class="container">
       <div class="section-label">Credentials</div>
-      <h2 class="section-title">Professional Certifications</h2>
+      <h2 class="section-title">Certifications & Achievements</h2>
+
       <div class="certs-grid">
-        <div class="cert-card fade-up">
-          <div class="cert-icon">☁️</div>
-          <div class="cert-name">OCI Architect Associate</div>
-          <div class="cert-issuer">Oracle Corporation</div>
-          <div class="cert-year">2024</div>
-          <span class="cert-status">✓ Active</span>
+        <div class="cert-card">
+          <div class="cert-icon">🏆</div>
+          <div class="cert-name">Oracle Cloud Infrastructure Certified Associate</div>
+          <div class="cert-issuer">Oracle</div>
+          <div class="cert-date">2023</div>
         </div>
 
-        <div class="cert-card fade-up">
-          <div class="cert-icon">🏛️</div>
-          <div class="cert-name">OCI Foundations Associate</div>
-          <div class="cert-issuer">Oracle Corporation</div>
-          <div class="cert-year">2023</div>
-          <span class="cert-status">✓ Active</span>
+        <div class="cert-card">
+          <div class="cert-icon">🏆</div>
+          <div class="cert-name">HashiCorp Certified: Terraform Associate</div>
+          <div class="cert-issuer">HashiCorp</div>
+          <div class="cert-date">2022</div>
         </div>
 
-        <div class="cert-card fade-up">
-          <div class="cert-icon">☁️</div>
-          <div class="cert-name">AWS Cloud Practitioner Essentials</div>
-          <div class="cert-issuer">Amazon Web Services</div>
-          <div class="cert-year">2023</div>
-          <span class="cert-status">✓ Active</span>
-        </div>
-
-        <div class="cert-card fade-up">
-          <div class="cert-icon">🔒</div>
-          <div class="cert-name">Fortinet Network Security Expert (NSE) 1 &amp; 2</div>
-          <div class="cert-issuer">Fortinet</div>
-          <div class="cert-year">2022</div>
-          <span class="cert-status">✓ Active</span>
-        </div>
-
-        <div class="cert-card fade-up">
-          <div class="cert-icon">🖥️</div>
-          <div class="cert-name">Windows Server 2022 Administration</div>
-          <div class="cert-issuer">Microsoft</div>
-          <div class="cert-year">2023</div>
-          <span class="cert-status">✓ Active</span>
+        <div class="cert-card">
+          <div class="cert-icon">🏆</div>
+          <div class="cert-name">Red Hat Certified System Administrator</div>
+          <div class="cert-issuer">Red Hat</div>
+          <div class="cert-date">2021</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CONTACT SECTION ============ -->
+  <!-- Contact Section -->
   <section id="contact">
     <div class="container">
-      <div class="section-label">Get In Touch</div>
-      <h2 class="section-title">Let's work together</h2>
-      <div class="contact-wrapper">
-        <div class="contact-left fade-up">
-          <p>Looking for a Senior Network Engineer who can design, automate, and manage enterprise systems? I'd love to hear about your project or opportunity.</p>
-          <div class="contact-items">
-            <a href="#" onclick="window.location='mai'+'lto:'+'kashyapparmar1998'+'@'+'gmail.com'; return false;" class="contact-item">
-              <div class="ci-icon">✉️</div>
-              <div><div class="ci-label">Email</div><div class="ci-val"><span class="js-email"></span></div></div>
-            </a>
-            <a href="tel:+917016218869" class="contact-item">
-              <div class="ci-icon">📞</div>
-              <div><div class="ci-label">Phone</div><div class="ci-val">+91 7016218869</div></div>
-            </a>
-            <div class="contact-item">
-              <div class="ci-icon">📍</div>
-              <div><div class="ci-label">Location</div><div class="ci-val">Ahmedabad, Gujarat, India</div></div>
-            </div>
-          </div>
-        </div>
-        <div class="contact-form-wrap fade-up">
-          <div class="form-title">Send a message</div>
-          <form id="contactForm">
-            <div class="form-row">
-              <label class="form-label">Your Name</label>
-              <input type="text" name="name" class="form-input" placeholder="John Doe" required>
-            </div>
-            <div class="form-row">
-              <label class="form-label">Your Email</label>
-              <input type="email" name="email" class="form-input" placeholder="john@example.com" required>
-            </div>
-            <div class="form-row">
-              <label class="form-label">Message</label>
-              <textarea name="message" class="form-input" placeholder="Hi Kashyap, I'd like to discuss..." required></textarea>
-            </div>
-            <button type="submit" class="form-btn" id="submitBtn">Send Message →</button>
-          </form>
-        </div>
-      </div>
+      <div class="section-label">Connect</div>
+      <h2 class="section-title">Get In Touch</h2>
+      <p style="font-size: 1rem; color: var(--text-mid); margin-bottom: 40px; max-width: 600px;">
+        Interested in collaborating or have a project in mind? Feel free to reach out. I'm always happy to connect with fellow professionals.
+      </p>
+      <a href="mailto:kashyapparmar1998@gmail.com" rel="noopener noreferrer" class="btn btn-primary">Send me an Email</a>
     </div>
   </section>
 
-  <!-- Back To Top Button -->
-  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
-
   <!-- Footer -->
-  <footer role="contentinfo">
-    <div class="footer-logo">Kashyap<span>.</span></div>
-    <div>© 2025 Kashyap Parmar · Ahmedabad, India</div>
-    <div>Built with ♥ using HTML, CSS &amp; Vanilla JavaScript</div>
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-social">
+        <a href="#" aria-label="LinkedIn" rel="noopener noreferrer" title="LinkedIn">𝗟</a>
+        <a href="#" aria-label="GitHub" rel="noopener noreferrer" title="GitHub">⚙️</a>
+        <a href="#" aria-label="Twitter" rel="noopener noreferrer" title="Twitter">𝕏</a>
+      </div>
+      <p class="footer-text">
+        © 2025 Kashyap Parmar. All rights reserved. | 
+        <a href="#" style="color: var(--accent); text-decoration: none;">Privacy Policy</a>
+      </p>
+    </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // Inject email via JS to bypass Cloudflare email protection
-    const em = 'kashyapparmar1998' + '@' + 'gmail.com';
-    document.querySelectorAll('.js-email').forEach(el => { el.textContent = em; });
-    document.querySelectorAll('a[href="#"]').forEach(a => {
-      if (a.querySelector('.js-email')) {
-        a.href = 'mai' + 'lto:' + em;
-      }
-    });
-    document.querySelectorAll('.info-val a[href="#"]').forEach(a => {
-      a.href = 'mai' + 'lto:' + em;
-    });
-
-    // Dark / Light Mode
-    function getTheme() { try { return localStorage.getItem('theme'); } catch(e) { return null; } }
-    function setTheme(t) { try { localStorage.setItem('theme', t); } catch(e) {} }
-
-    // Update theme button icon on load
-    (function(){
-      var btn = document.getElementById('themeBtn');
-      if(btn && document.documentElement.getAttribute('data-theme')==='dark'){
-        btn.textContent = '☀️';
-      }
-    })();
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e){
-      if(!e.target.closest('#hamburger') && !e.target.closest('#mobileMenu')) window.closeMenu();
-    });
-
-    // Scroll bar + Back to top
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
-      document.getElementById('scrollBar').style.width = pct * 100 + '%';
-      backToTop.classList.toggle('show', window.scrollY > 400);
-    });
-
-    // Count up animation
-    function countUp(id, target) {
-      let n = 0;
-      const el = document.getElementById(id);
-      const step = Math.ceil(target / 50);
-      const t = setInterval(() => {
-        n = Math.min(n + step, target);
-        el.textContent = n;
-        if (n >= target) clearInterval(t);
-      }, 30);
-    }
-    countUp('c1', 5);
-    countUp('c2', 20);
-    countUp('c3', 99);
-
-    // Fade-up + skill bars on scroll
-    const allFadeEls = document.querySelectorAll('.fade-up, .skill-card');
-
-    if ('IntersectionObserver' in window) {
-      allFadeEls.forEach(el => el.classList.add('animate'));
-
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('visible', 'in-view');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-
-      allFadeEls.forEach(el => io.observe(el));
-
-      setTimeout(() => {
-        allFadeEls.forEach(el => el.classList.add('visible', 'in-view'));
-      }, 3000);
-    }
-
-    // Formspree Contact Form
-    const form = document.getElementById('contactForm');
-    const submitBtn = document.getElementById('submitBtn');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      submitBtn.textContent = 'Sending...';
-      submitBtn.style.background = '#6b7280';
-      submitBtn.disabled = true;
-
-      try {
-        const res = await fetch('https://formspree.io/f/mnjbboad', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: new FormData(form)
-        });
-        if (res.ok) {
-          submitBtn.textContent = '✓ Message Sent!';
-          submitBtn.style.background = '#10b981';
-          form.reset();
-          setTimeout(() => {
-            submitBtn.textContent = 'Send Message →';
-            submitBtn.style.background = '';
-            submitBtn.disabled = false;
-          }, 3000);
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        submitBtn.textContent = '✗ Error sending message';
-        submitBtn.style.background = '#ef4444';
-        setTimeout(() => {
-          submitBtn.textContent = 'Send Message →';
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-        }, 3000);
-      }
-    });
-  </script>
+  <!-- External JavaScript -->
+  <script src="script.js" defer></script>
 </body>
 </html>
